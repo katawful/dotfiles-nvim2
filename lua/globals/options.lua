@@ -49,7 +49,7 @@ vim.opt_global["inccommand"] = "nosplit"
 do end (vim.opt_local.nrformats):remove("octal")
 vim.diagnostic.config({virtual_text = false})
 vim.lsp.inlay_hint.enable()
-do end (vim.opt_global)["guifont"] = {"FiraCode Nerd Font Mono", ":h10"}
+do end (vim.opt_global)["guifont"] = {"FiraCode Nerd Font Mono", ":h12"}
 if vim.g.neovide then
   vim.g["neovide_transparency"] = 0.75
   vim.g["neovide_remember_window_size"] = false

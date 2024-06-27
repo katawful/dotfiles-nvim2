@@ -45,7 +45,7 @@
 (vim.diagnostic.config {:virtual_text false})
 (vim.lsp.inlay_hint.enable)
 
-(option.set guifont ["FiraCode Nerd Font Mono" ":h10"])
+(option.set guifont ["FiraCode Nerd Font Mono" ":h12"])
 (if vim.g.neovide
     (option.set :g {:neovide_cursor_animation_length 0.02
                     :neovide_cursor_trail_length 2
