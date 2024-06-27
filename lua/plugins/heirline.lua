@@ -12,6 +12,7 @@ local file = autoload("plugins.heirline.file")
 local buffer = autoload("plugins.heirline.buffer")
 local tabline = autoload("plugins.heirline.tabline")
 local fold = autoload("plugins.heirline.fold")
+local lsp = autoload("plugins.heirline.lsp")
 local function line(_plugin, _opts)
   local components = {}
   local raw = {}
@@ -110,9 +111,39 @@ local function line(_plugin, _opts)
     end
   end
   raw.marks = {condition = _14_, hl = _15_, provider = _16_}
+  local function _19_(_241)
+    _241.sign = lsp["get-sign"](lsp["get-name"](), vim.v.lnum)
+    return nil
+  end
+  local function _20_(_241)
+    local _21_ = lsp["get-sign-icon"](_241.sign)
+    if (_21_ == "E") then
+      return icons.lsp.error
+    elseif (_21_ == "H") then
+      return icons.lsp.hint
+    elseif (_21_ == "I") then
+      return icons.lsp.info
+    elseif (_21_ == "O") then
+      return icons.lsp.other
+    elseif (_21_ == "W") then
+      return icons.lsp.warn
+    elseif true then
+      local _ = _21_
+      return " "
+    else
+      return nil
+    end
+  end
+  local function _23_(_241)
+    return lsp["get-sign-type"](_241.sign)
+  end
+  local function _24_()
+    return conditions.lsp_attached()
+  end
+  raw["lsp-signs"] = {init = _19_, provider = _20_, hl = _23_, condition = _24_}
   components.numbers = {raw.lnum, raw.marks, raw.relnum}
   raw.gitsigns = git.component
-  local function _19_()
+  local function _25_()
     return (vim.opt.foldenable):get()
   end
   local function _20_()

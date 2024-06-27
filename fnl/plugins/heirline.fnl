@@ -21,6 +21,7 @@
 (local buffer (autoload :plugins.heirline.buffer))
 (local tabline (autoload :plugins.heirline.tabline))
 (local fold (autoload :plugins.heirline.fold))
+(local lsp (autoload :plugins.heirline.lsp))
 
 (fn line [_plugin _opts]
 
@@ -122,6 +123,17 @@
                                                2 2)
                                    " "))})
 
+  (set raw.lsp-signs {:init #(set $1.sign (lsp.get-sign (lsp.get-name) vim.v.lnum))
+                      :provider #(match (lsp.get-sign-icon $1.sign)
+                                   :E icons.lsp.error
+                                   :H icons.lsp.hint
+                                   :I icons.lsp.info
+                                   :O icons.lsp.other
+                                   :W icons.lsp.warn
+                                   _ " ")
+                      :hl #(lsp.get-sign-type $1.sign)
+                      :condition #(conditions.lsp_attached)})
+
   (set components.numbers {1 raw.lnum
                            2 raw.marks
                            3 raw.relnum})
@@ -133,6 +145,7 @@
                                    :condition #(options.get foldenable)}
                                 3 components.numbers
                                 4 raw.gitsigns
+                                5 raw.lsp-signs
                                 :hl #(utils.hl-current-line nil
                                                             {:default colors.bright_bg
                                                              :new colors.normal_bg})})
