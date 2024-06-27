@@ -14,18 +14,18 @@
 (local delimiter config.providers.delimiter)
 
 
-(set M.component [[{1 (heir-utils.surround delimiter.left #:dark_blue file.icon)
+(set M.component [[{1 (heir-utils.surround delimiter.left #config.colors.dark_blue file.icon)
                     :condition #(not (conditions.buffer_matches {:buftype config.ignored-type}))}
-                   {1 (heir-utils.surround delimiter.left #:blue file.full-name)
+                   {1 (heir-utils.surround delimiter.left #config.colors.blue file.full-name)
                     :condition #(not (conditions.buffer_matches {:buftype config.ignored-type}))
-                    :hl {:bg :dark_blue}}
+                    :hl {:bg config.colors.dark_blue}}
                    {1 file.flags
                     :condition #(not (conditions.buffer_matches {:buftype config.ignored-type}))
                     :hl {:bg :blue}}]
-                  {1 (heir-utils.surround delimiter.left #:blue file.help)
+                  {1 (heir-utils.surround delimiter.left #config.colors.blue file.help)
                    :condition #(conditions.buffer_matches {:buftype [:help]})
-                   :hl {:bg :pink}}
-                  {1 (heir-utils.surround delimiter.left #:blue file.terminal)
+                   :hl {:bg config.colors.pink}}
+                  {1 (heir-utils.surround delimiter.left #config.colors.blue file.terminal)
                    :condition #(conditions.buffer_matches {:buftype [:terminal]})
-                   :hl {:bg :pink}}])
+                   :hl {:bg config.colors.pink}}])
 M

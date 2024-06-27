@@ -50,7 +50,7 @@ local function _3_()
   end
 end
 local function _13_()
-  return utils["hl-current-line"]({default = colors.green, new = colors.light_green}, nil, {default = {bold = false}, new = {bold = true}})
+  return utils["hl-current-line"]({default = config.colors.green, new = config.colors.light_green}, nil, {default = {bold = false}, new = {bold = true}})
 end
 M.component = {condition = _2_, provider = _3_, hl = _13_}
 return M

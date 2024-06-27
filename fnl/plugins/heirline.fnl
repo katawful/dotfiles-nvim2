@@ -33,17 +33,19 @@
   (set config.colors (config.gen-colors))
   (local colors config.colors)
 
-  ((. (require :heirline) :load_colors) colors)
+  ((. (require :heirline) :load_colors) config.colors)
   (options.set showtabline 2)
   (let [heir (auto.group.define "UserHeirline" true)]
     (auto.group.fill heir
       (auto.cmd.create "ColorScheme"
                        nil
-                       #(do (heir-utils.on_colorscheme colors)
-                          (utils.status-color colors))
+                       #(do
+                          ;(set config.colors (config.gen-colors))
+                          ;(print config.colors.normal_bg)
+                          (line))
                        "heirline.nvim -- Reload colors on change")))
 
-  (utils.status-color colors)
+  (utils.status-color config.colors)
 
   ;; Configuration
   (local delimiter config.providers.delimiter)
@@ -78,8 +80,8 @@
                                   lnum (if (> lnum-size lnum-length)
                                            (.. " " lnum) lnum)]
                               lnum)
-                 :hl #(utils.hl-current-line {:default colors.light_pink
-                                              :new colors.pink}
+                 :hl #(utils.hl-current-line {:default config.colors.light_pink
+                                              :new config.colors.pink}
                                              nil
                                              {:default {:bold false}
                                               :new {:bold true}})})
@@ -90,8 +92,8 @@
                                                relnum
                                                (.. " " relnum))]
                                    relnum)
-                   :hl #(utils.hl-current-line {:default colors.light_pink
-                                                :new colors.pink}
+                   :hl #(utils.hl-current-line {:default config.colors.light_pink
+                                                :new config.colors.pink}
                                                nil
                                                {:default {:bold false}
                                                 :new {:bold true}})})
@@ -100,8 +102,8 @@
                                       (options.get relativenumber))
                                   (and (options.get number)
                                        (options.get relativenumber)))
-                  :hl #(utils.hl-current-line {:default colors.blue
-                                               :new colors.dark_blue}
+                  :hl #(utils.hl-current-line {:default config.colors.blue
+                                               :new config.colors.dark_blue}
                                               nil
                                               {:default {:bold false}
                                                :new {:bold true}})
@@ -147,8 +149,8 @@
                                 4 raw.gitsigns
                                 5 raw.lsp-signs
                                 :hl #(utils.hl-current-line nil
-                                                            {:default colors.bright_bg
-                                                             :new colors.normal_bg})})
+                                                            {:default config.colors.bright_bg
+                                                             :new config.colors.normal_bg})})
                                 ;:condition #(conditions.is_active)})
 
   ;; Return statusline

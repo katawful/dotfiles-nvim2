@@ -6,19 +6,19 @@
 (local M {})
 (local colors config.colors)
 
-(set M.static {:mode_colors_map {:n colors.purple
-                                 :i colors.blue
-                                 :v colors.red
-                                 :V colors.red
-                                 "\22" colors.cyan
-                                 :c colors.green
-                                 :s colors.light_red
-                                 :S colors.light_red
-                                 "\19" colors.purple
-                                 :R colors.orange
-                                 :r colors.orange
-                                 :! colors.red
-                                 :t colors.red}
+(set M.static {:mode_colors_map {:n config.colors.purple
+                                 :i config.colors.blue
+                                 :v config.colors.red
+                                 :V config.colors.red
+                                 "\22" config.colors.cyan
+                                 :c config.colors.green
+                                 :s config.colors.light_red
+                                 :S config.colors.light_red
+                                 "\19" config.colors.purple
+                                 :R config.colors.orange
+                                 :r config.colors.orange
+                                 :! config.colors.red
+                                 :t config.colors.red}
                  :mode_color #(let [mode (or (and conditions.is_active
                                                   (cmd.run.fn :mode))
                                              :n)]

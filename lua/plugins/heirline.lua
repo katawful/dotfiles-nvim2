@@ -18,17 +18,16 @@ local function line(_plugin, _opts)
   local raw = {}
   config.colors = config["gen-colors"]()
   local colors = config.colors
-  do end (require("heirline")).load_colors(colors)
+  do end (require("heirline")).load_colors(config.colors)
   do end (vim.opt_global)["showtabline"] = 2
   do
     local heir = vim.api.nvim_create_augroup("UserHeirline", {clear = true})
     local function _2_()
-      heir_utils.on_colorscheme(colors)
-      return utils["status-color"](colors)
+      return line()
     end
     vim.api.nvim_create_autocmd("ColorScheme", {callback = _2_, desc = "heirline.nvim -- Reload colors on change", group = heir, pattern = nil})
   end
-  utils["status-color"](colors)
+  utils["status-color"](config.colors)
   local delimiter = config.providers.delimiter
   raw["vi-mode"] = vi_mode.component
   raw.buffername = buffer.component
@@ -63,7 +62,7 @@ local function line(_plugin, _opts)
     return lnum0
   end
   local function _9_()
-    return utils["hl-current-line"]({default = colors.light_pink, new = colors.pink}, nil, {default = {bold = false}, new = {bold = true}})
+    return utils["hl-current-line"]({default = config.colors.light_pink, new = config.colors.pink}, nil, {default = {bold = false}, new = {bold = true}})
   end
   raw.lnum = {condition = _6_, provider = _7_, hl = _9_}
   local function _10_()
@@ -80,14 +79,14 @@ local function line(_plugin, _opts)
     return relnum0
   end
   local function _13_()
-    return utils["hl-current-line"]({default = colors.light_pink, new = colors.pink}, nil, {default = {bold = false}, new = {bold = true}})
+    return utils["hl-current-line"]({default = config.colors.light_pink, new = config.colors.pink}, nil, {default = {bold = false}, new = {bold = true}})
   end
   raw.relnum = {condition = _10_, provider = _11_, hl = _13_}
   local function _14_()
     return (((vim.opt.number):get() or (vim.opt.relativenumber):get()) or ((vim.opt.number):get() and (vim.opt.relativenumber):get()))
   end
   local function _15_()
-    return utils["hl-current-line"]({default = colors.blue, new = colors.dark_blue}, nil, {default = {bold = false}, new = {bold = true}})
+    return utils["hl-current-line"]({default = config.colors.blue, new = config.colors.dark_blue}, nil, {default = {bold = false}, new = {bold = true}})
   end
   local function _16_()
     local marks = vim.fn.getmarklist(vim.fn.bufname())
@@ -146,20 +145,20 @@ local function line(_plugin, _opts)
   local function _25_()
     return (vim.opt.foldenable):get()
   end
-  local function _20_()
-    return utils["hl-current-line"](nil, {default = colors.bright_bg, new = colors.normal_bg})
+  local function _26_()
+    return utils["hl-current-line"](nil, {default = config.colors.bright_bg, new = config.colors.normal_bg})
   end
-  components.statuscolumn = {raw.fold, {provider = " ", condition = _19_}, components.numbers, raw.gitsigns, hl = _20_}
-  local function _21_()
+  components.statuscolumn = {raw.fold, {provider = " ", condition = _25_}, components.numbers, raw.gitsigns, raw["lsp-signs"], hl = _26_}
+  local function _27_()
     if conditions.is_active() then
       return "StatusLine"
     else
       return "StatusLineNC"
     end
   end
-  return {tabline = components.tabline, statusline = {{components["vi-mode"], condition = conditions.is_active}, components.spell, components.filename, config.providers.even, {components.filedetails, condition = conditions.is_active}, static = vi_mode.static, hl = _21_, fallthrough = true}, statuscolumn = components.statuscolumn}
+  return {tabline = components.tabline, statusline = {{components["vi-mode"], condition = conditions.is_active}, components.spell, components.filename, config.providers.even, {components.filedetails, condition = conditions.is_active}, static = vi_mode.static, hl = _27_, fallthrough = true}, statuscolumn = components.statuscolumn}
 end
-local function _23_(_241, _242)
+local function _29_(_241, _242)
   return line(_241, _242)
 end
-return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _23_}
+return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _29_}

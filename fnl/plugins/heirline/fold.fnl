@@ -46,8 +46,8 @@
                                    (and fold-open? fold?)
                                    foldchars.open
                                    " "))
-                  :hl #(utils.hl-current-line {:default colors.green
-                                               :new colors.light_green}
+                  :hl #(utils.hl-current-line {:default config.colors.green
+                                               :new config.colors.light_green}
                                               nil
                                               {:default {:bold false}
                                                :new {:bold true}})})

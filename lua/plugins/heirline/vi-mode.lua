@@ -8,7 +8,7 @@ local function _1_(_241)
   local mode = ((conditions.is_active and vim.fn.mode()) or "n")
   return (_241.mode_colors_map)[mode]
 end
-M.static = {mode_colors_map = {n = colors.purple, i = colors.blue, v = colors.red, V = colors.red, ["\22"] = colors.cyan, c = colors.green, s = colors.light_red, S = colors.light_red, ["\19"] = colors.purple, R = colors.orange, r = colors.orange, ["!"] = colors.red, t = colors.red}, mode_color = _1_}
+M.static = {mode_colors_map = {n = config.colors.purple, i = config.colors.blue, v = config.colors.red, V = config.colors.red, ["\22"] = config.colors.cyan, c = config.colors.green, s = config.colors.light_red, S = config.colors.light_red, ["\19"] = config.colors.purple, R = config.colors.orange, r = config.colors.orange, ["!"] = config.colors.red, t = config.colors.red}, mode_color = _1_}
 local function _2_(_241)
   _241.mode = vim.fn.mode(1)
   return nil
