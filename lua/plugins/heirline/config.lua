@@ -7,5 +7,5 @@ M["gen-colors"] = function()
 end
 local delimiters = icons["powerline-half-circle-thick"]
 M.providers = {delimiter = {left = {delimiters.left, nil}, right = {nil, delimiters.right}, both = {delimiters.left, delimiters.right}}, truncate = {provider = "<="}, padding = {provider = " "}, even = {provider = "%="}, space = " "}
-M["ignored-types"] = {"prompt", "help", "terminal", "quickfix"}
+M["ignored-type"] = {"prompt", "help", "terminal", "quickfix"}
 return M

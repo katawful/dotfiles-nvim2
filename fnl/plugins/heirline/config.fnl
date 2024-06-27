@@ -50,9 +50,9 @@
                   :even {:provider "%="}
                   :space " "})
 
-(set M.ignored-types [:prompt
-                      :help
-                      :terminal
-                      :quickfix])
+(set M.ignored-type [:prompt
+                     :help
+                     :terminal
+                     :quickfix])
 
 M
