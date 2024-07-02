@@ -62,7 +62,7 @@
 @sign: table -- a table of signs, with the `details` flag enabled
 @detail: string -- the key from the details table to use"
   (var priority 0)
-  (var output "Normal") ; heirline will break if this is an invalid hl-group
+  (var output "MsgSeparator") ; heirline will break if this is an invalid hl-group
   (each [_ v (ipairs sign)]
     (let [sign-details (. v 4)]
       ;; Need to keep track of priority so that we can display the most important one in the sign column.
