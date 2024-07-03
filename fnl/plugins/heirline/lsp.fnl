@@ -38,17 +38,15 @@
 
 (λ M.get-sign [lsp-name lnum]
  "λ: M.get-sign -- Returns the sign information based on the lsp-name and the line number
+Neovim LSP integration does not create a sign namespace until signs actually
+exist. We must see if there even is an existing id before we use it. Returning
+an empty table will simply skip over it in any call that uses this until signs
+exist. We also make sure to set the component condition to when the lsp is
+available
 @lsp-name: string -- name of lsp
 @lnum: int -- line number"
   (let [id (M.get-namespace lsp-name lnum)
         lnum (+ lnum -1)]
-    ;; Neovim LSP integration does not create a sign namespace
-    ;; until signs actually exist. We must see if there even is
-    ;; an existing id before we use it.
-    ;; Returning an empty table will simply skip over it in
-    ;; any call that uses this until signs exist.
-    ;; We also make sure to set the component condition to when the lsp
-    ;; is available
     (if (not (n.empty? id))
        (vim.api.nvim_buf_get_extmarks 0
                                       (. id 1)
@@ -59,14 +57,16 @@
 
 (λ P.get-sign-detail [sign detail]
  "λ: P.get-sign-detail -- Get a specific detail of signs based on priority for the line
+We need to keep track of priority so that we can display the most important one
+in the sign column.
+This is currently quite roughly put together
 @sign: table -- a table of signs, with the `details` flag enabled
 @detail: string -- the key from the details table to use"
   (var priority 0)
-  (var output "MsgSeparator") ; heirline will break if this is an invalid hl-group
+  (comment "heirline will break if it is passed an invalid hl-group")
+  (var output "MsgSeparator")
   (each [_ v (ipairs sign)]
     (let [sign-details (. v 4)]
-      ;; Need to keep track of priority so that we can display the most important one in the sign column.
-      ;; I don't know how to do this functionally
       (if (> sign-details.priority priority)
           (do (set priority sign-details.priority)
             (set output (. sign-details detail))))))
@@ -80,9 +80,9 @@
 
 (λ M.get-sign-icon [sign]
  "λ: M.get-sign-icon -- Get the sign icon provided by vim.diagnostic for this sign
+There is an extra space after the sign text, at least by default. Just grab that
+first character, should be fine for any sign icon setup
 @sign: table -- a table of signs, with the `details` flag enabled"
-  ;; There is an extra space after the sign text, at least by default
-  ;; Just grab that first character, should be fine for any sign icon setup
   (string.sub (P.get-sign-detail sign :sign_text) 0 1))
 
 M

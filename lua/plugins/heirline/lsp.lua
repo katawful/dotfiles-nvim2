@@ -46,9 +46,10 @@ M["get-sign"] = function(lsp_name, lnum)
   end
 end
 P["get-sign-detail"] = function(sign, detail)
-  _G.assert((nil ~= detail), "Missing argument detail on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:60")
-  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:60")
+  _G.assert((nil ~= detail), "Missing argument detail on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:58")
+  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:58")
   local priority = 0
+  --[[ "heirline will break if it is passed an invalid hl-group" ]]
   local output = "MsgSeparator"
   for _, v in ipairs(sign) do
     local sign_details = v[4]
