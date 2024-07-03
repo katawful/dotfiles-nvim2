@@ -55,7 +55,7 @@
    :start hunk-line-number-start
    :end hunk-line-number-end}}
   ```
-  @hunk: table -- a hunk as defined by gitsigns.nvim"vermicultur
+  @hunk: table -- a hunk as defined by gitsigns.nvim"
   (match (. hunk :type)
     :change (P.hunk-changed hunk)
     :add (P.hunk-added hunk)
