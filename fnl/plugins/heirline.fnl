@@ -136,6 +136,11 @@
                                   (if (not (n.empty? mark)) mark.name " "))})
 
   (set raw.lsp-signs {:init #(set $1.sign (lsp.get-sign (lsp.get-name) vim.v.lnum))
+                      :on_click {:name "heirline_statuscolumn_lsp_callback"
+                                 :callback #(let [mouse-lnum (. (vim.fn.getmousepos) :line)]
+                                              (vim.api.nvim_win_set_cursor 0 [mouse-lnum 0])
+                                              (vim.diagnostic.open_float {:source true
+                                                                          :border :solid}))}
                       :provider #(match (lsp.get-sign-icon $1.sign)
                                    :E icons.lsp.error
                                    :H icons.lsp.hint

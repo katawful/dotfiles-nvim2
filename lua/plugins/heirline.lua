@@ -146,51 +146,56 @@ local function line(_plugin, _opts)
     _241.sign = lsp["get-sign"](lsp["get-name"](), vim.v.lnum)
     return nil
   end
-  local function _28_(_241)
-    local _29_ = lsp["get-sign-icon"](_241.sign)
-    if (_29_ == "E") then
+  local function _28_()
+    local mouse_lnum = vim.fn.getmousepos().line
+    vim.api.nvim_win_set_cursor(0, {mouse_lnum, 0})
+    return vim.diagnostic.open_float({source = true, border = "solid"})
+  end
+  local function _29_(_241)
+    local _30_ = lsp["get-sign-icon"](_241.sign)
+    if (_30_ == "E") then
       return icons.lsp.error
-    elseif (_29_ == "H") then
+    elseif (_30_ == "H") then
       return icons.lsp.hint
-    elseif (_29_ == "I") then
+    elseif (_30_ == "I") then
       return icons.lsp.info
-    elseif (_29_ == "O") then
+    elseif (_30_ == "O") then
       return icons.lsp.other
-    elseif (_29_ == "W") then
+    elseif (_30_ == "W") then
       return icons.lsp.warn
     elseif true then
-      local _ = _29_
+      local _ = _30_
       return " "
     else
       return nil
     end
   end
-  local function _31_(_241)
+  local function _32_(_241)
     return lsp["get-sign-type"](_241.sign)
   end
-  local function _32_()
+  local function _33_()
     return conditions.lsp_attached()
   end
-  raw["lsp-signs"] = {init = _27_, provider = _28_, hl = _31_, condition = _32_}
+  raw["lsp-signs"] = {init = _27_, on_click = {name = "heirline_statuscolumn_lsp_callback", callback = _28_}, provider = _29_, hl = _32_, condition = _33_}
   components.numbers = {raw.lnum, raw.marks, raw.relnum}
   raw.gitsigns = git.component
-  local function _33_()
+  local function _34_()
     return (vim.opt.foldenable):get()
   end
-  local function _34_()
+  local function _35_()
     return utils["hl-current-line"](nil, {default = config.colors.bright_bg, new = config.colors.normal_bg})
   end
-  components.statuscolumn = {raw.fold, {provider = " ", condition = _33_}, components.numbers, raw.gitsigns, raw["lsp-signs"], hl = _34_}
-  local function _35_()
+  components.statuscolumn = {raw.fold, {provider = " ", condition = _34_}, components.numbers, raw.gitsigns, raw["lsp-signs"], hl = _35_}
+  local function _36_()
     if conditions.is_active() then
       return "StatusLine"
     else
       return "StatusLineNC"
     end
   end
-  return {tabline = components.tabline, statusline = {{components["vi-mode"], condition = conditions.is_active}, components.spell, components.filename, config.providers.even, {components.filedetails, condition = conditions.is_active}, static = vi_mode.static, hl = _35_, fallthrough = true}, statuscolumn = components.statuscolumn}
+  return {tabline = components.tabline, statusline = {{components["vi-mode"], condition = conditions.is_active}, components.spell, components.filename, config.providers.even, {components.filedetails, condition = conditions.is_active}, static = vi_mode.static, hl = _36_, fallthrough = true}, statuscolumn = components.statuscolumn}
 end
-local function _37_(_241, _242)
+local function _38_(_241, _242)
   return line(_241, _242)
 end
-return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _37_}
+return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _38_}
