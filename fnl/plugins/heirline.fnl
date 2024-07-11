@@ -7,6 +7,7 @@
 (local heir-utils (autoload :heirline.utils))
 (local utils (autoload :plugins.heirline.utils))
 (local config (autoload :plugins.heirline.config))
+(local n (autoload :nfnl.core))
 
 ;;; Macros
 (import-macros lazy :nvim-anisole.macros.lazy)
@@ -98,7 +99,23 @@
                                                {:default {:bold false}
                                                 :new {:bold true}})})
 
-  (set raw.marks {:condition #(or (or (options.get number)
+  (set raw.marks {:init #(set $1.marks (icollect [_ mark (ipairs (vim.fn.getmarklist (vim.fn.bufname)))]
+                                         {:name (string.sub mark.mark 2 2)
+                                          :buf (. mark.pos 1)
+                                          :lnum (. mark.pos 2)
+                                          :col (. mark.pos 3)}))
+                  :on_click {:callback (fn [self _minwid _nclicks _button _mod]
+                                         (let [mouse-lnum (. (vim.fn.getmousepos) :line)
+                                               mark (n.first (n.filter
+                                                               #(= $1.lnum mouse-lnum)
+                                                               self.marks))]
+                                           (if (and (-> mark (n.empty?) (not))
+                                                    (= mouse-lnum mark.lnum))
+                                               (vim.api.nvim_win_set_cursor 0 [mark.lnum
+                                                                               (- mark.col 1)])
+                                               (vim.api.nvim_win_set_cursor 0 [mouse-lnum 0]))))
+                             :name "heirline_statuscolumn_marks_callback"}
+                  :condition #(or (or (options.get number)
                                       (options.get relativenumber))
                                   (and (options.get number)
                                        (options.get relativenumber)))
@@ -107,23 +124,8 @@
                                               nil
                                               {:default {:bold false}
                                                :new {:bold true}})
-                  :provider #(let [marks (vim.fn.getmarklist (vim.fn.bufname))
-                                   ;; note that the 2nd index is for the line number
-                                   lnum vim.v.lnum]
-                               (var matched? false)
-                               (var index 0)
-                               (each [i mark (ipairs marks) &until matched?]
-                                 (if (= (. (. mark :pos) 2) lnum)
-                                     (do
-                                       (set index i)
-                                       (set matched? true))
-                                     (do
-                                       (set index 0)
-                                       (set matched? false))))
-                               (if matched?
-                                   (string.sub (. (. marks index) :mark)
-                                               2 2)
-                                   " "))})
+                  :provider #(let [mark (n.first (n.filter #(= $1.lnum vim.v.lnum) $1.marks))]
+                                  (if (not (n.empty? mark)) mark.name " "))})
 
   (set raw.lsp-signs {:init #(set $1.sign (lsp.get-sign (lsp.get-name) vim.v.lnum))
                       :provider #(match (lsp.get-sign-icon $1.sign)
