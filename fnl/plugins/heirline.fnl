@@ -81,6 +81,10 @@
                                   lnum (if (> lnum-size lnum-length)
                                            (.. " " lnum) lnum)]
                               lnum)
+                 :on_click {:callback (fn [_self _minwid _nclicks _button _mod]
+                                        (let [mouse-lnum (. (vim.fn.getmousepos) :line)]
+                                          (vim.api.nvim_win_set_cursor 0 [mouse-lnum 0])))
+                            :name "heirline_statuscolumn_number_callback"}
                  :hl #(utils.hl-current-line {:default config.colors.light_pink
                                               :new config.colors.pink}
                                              nil
@@ -93,6 +97,10 @@
                                                relnum
                                                (.. " " relnum))]
                                    relnum)
+                   :on_click {:callback (fn [_self _minwid _nclicks _button _mod]
+                                          (let [mouse-lnum (. (vim.fn.getmousepos) :line)]
+                                            (vim.api.nvim_win_set_cursor 0 [mouse-lnum 0])))
+                              :name "heirline_statuscolumn_number_callback"}
                    :hl #(utils.hl-current-line {:default config.colors.light_pink
                                                 :new config.colors.pink}
                                                nil
