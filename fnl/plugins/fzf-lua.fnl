@@ -45,4 +45,8 @@
         {1 (.. fzf-leader :c)
          2 #((. (require :fzf-lua) :command_history))
          :mode [:n]
-         :desc "fzf-lua: Command history"}]}
+         :desc "fzf-lua: Command history"}
+        {1 (.. fzf-leader :r)
+         2 #((. (require :fzf-lua) :resume))
+         :mode [:n]
+         :desc "fzf-lua: Resume last search"}]}

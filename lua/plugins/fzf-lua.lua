@@ -35,4 +35,7 @@ end
 local function _10_()
   return (require("fzf-lua")).command_history()
 end
-return {"ibhagwan/fzf-lua", dependencies = {nvim_web_devicons, fzf}, opts = {"telescope"}, init = _2_, keys = {{(fzf_leader .. "f"), _3_, mode = {"n"}, desc = "fzf-lua: Files in cwd"}, {(fzf_leader .. "b"), _4_, mode = {"n"}, desc = "fzf-lua: Buffer list"}, {(fzf_leader .. "h"), _5_, mode = {"n"}, desc = "fzf-lua: Help tags"}, {(fzf_leader .. "g"), _6_, mode = {"n"}, desc = "fzf-lua: Live grep"}, {"z=", _7_, mode = {"n"}, desc = "fzf-lua: Spell suggestion"}, {(fzf_leader .. "m"), _8_, mode = {"n"}, desc = "fzf-lua: Man pages"}, {(fzf_leader .. "'"), _9_, mode = {"n"}, desc = "fzf-lua: Marks"}, {(fzf_leader .. "c"), _10_, mode = {"n"}, desc = "fzf-lua: Command history"}}}
+local function _11_()
+  return (require("fzf-lua")).resume()
+end
+return {"ibhagwan/fzf-lua", dependencies = {nvim_web_devicons, fzf}, opts = {"telescope"}, init = _2_, keys = {{(fzf_leader .. "f"), _3_, mode = {"n"}, desc = "fzf-lua: Files in cwd"}, {(fzf_leader .. "b"), _4_, mode = {"n"}, desc = "fzf-lua: Buffer list"}, {(fzf_leader .. "h"), _5_, mode = {"n"}, desc = "fzf-lua: Help tags"}, {(fzf_leader .. "g"), _6_, mode = {"n"}, desc = "fzf-lua: Live grep"}, {"z=", _7_, mode = {"n"}, desc = "fzf-lua: Spell suggestion"}, {(fzf_leader .. "m"), _8_, mode = {"n"}, desc = "fzf-lua: Man pages"}, {(fzf_leader .. "'"), _9_, mode = {"n"}, desc = "fzf-lua: Marks"}, {(fzf_leader .. "c"), _10_, mode = {"n"}, desc = "fzf-lua: Command history"}, {(fzf_leader .. "r"), _11_, mode = {"n"}, desc = "fzf-lua: Resume last search"}}}
