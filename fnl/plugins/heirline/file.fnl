@@ -26,13 +26,14 @@
 ;; - Modified status
 (set M.block {:init #(set $1.filename (vim.api.nvim_buf_get_name 0))})
 
-(set M.icon {:init #(let [extension (cmd.run.fn :fnamemodify
-                                                $1.filename
+(set M.icon {:init #(let [filename (cmd.run.fn :expand "%:p")
+                          extension (cmd.run.fn :fnamemodify
+                                                filename
                                                 ":e")]
                       (set ($1.icon $1.icon_color)
                            ((. (require :nvim-web-devicons)
                                :get_icon_color)
-                            $1.filename extension {:default true})))
+                            filename extension {:default true})))
              :provider #(and $1.icon (.. $1.icon " "))
              :hl #{:fg $1.icon_color}})
 
