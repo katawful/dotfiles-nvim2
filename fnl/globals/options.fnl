@@ -50,8 +50,6 @@
     (option.set :g {:neovide_cursor_animation_length 0.02
                     :neovide_cursor_trail_length 2
                     :neovide_cursor_vfx_mode :railgun
-                    ;:neovide_cursor_transparency 0.75
-                    :neovide_transparency 0.75
                     :neovide_cursor_vfx_particle_density 20
                     :neovide_cursor_vfx_particle_speed 10
                     :neovide_text_gamma 0.8
