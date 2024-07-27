@@ -24,14 +24,14 @@
         true
         false))
 
-(lazy.spec.init nvim-treesitter
-        (lazy.spec.repo.gh :nvim-treesitter/nvim-treesitter)
-        (lazy.spec.repo.tag :v0.9.1)
-        (lazy.spec.module :nvim-treesitter.configs)
-        (lazy.spec.opts {:auto_install true
-                         : ensure_installed
-                         :highlight {:additional_vim_regex_highlighting false
-                                     :disable (fn [lang buf] (disable-treesitter lang buf))
-                                     :enable true}
-                         :ignore_install [:javascript]
-                         :sync_install false}))
+{1 :nvim-treesitter/nvim-treesitter
+ :tag :v0.9.1
+ :main :nvim-treesitter.configs
+ :dependencies [:nushell/tree-sitter-nu]
+ :opts {:auto_install true
+        : ensure_installed
+        :highlight {:additional_vim_regex_highlighting false
+                    :disable (fn [lang buf] (disable-treesitter lang buf))
+                    :enable true}
+        :ignore_install [:javascript]
+        :sync_install false}}
