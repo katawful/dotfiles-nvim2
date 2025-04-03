@@ -54,5 +54,5 @@
                     :neovide_cursor_vfx_particle_speed 10
                     :neovide_text_gamma 0.8
                     :neovide_text_contrast 0.1
-                    :neovide_remember_window_size false
+                    :neovide_remember_window_size true
                     :neovide_remember_window_position false}))

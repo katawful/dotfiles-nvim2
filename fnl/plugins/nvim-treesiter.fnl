@@ -25,13 +25,15 @@
         false))
 
 {1 :nvim-treesitter/nvim-treesitter
- :tag :v0.9.1
+ ; :tag :v0.10.1
  :main :nvim-treesitter.configs
+ :build ":TSUpdate"
  :dependencies [:nushell/tree-sitter-nu]
- :opts {:auto_install true
-        : ensure_installed
-        :highlight {:additional_vim_regex_highlighting false
-                    :disable (fn [lang buf] (disable-treesitter lang buf))
-                    :enable true}
-        :ignore_install [:javascript]
-        :sync_install false}}
+ :config #((. (require :nvim-treesitter.configs) :setup)
+           {:auto_install true
+            : ensure_installed
+            :highlight {:additional_vim_regex_highlighting false
+                        :disable (fn [lang buf] (disable-treesitter lang buf))
+                        :enable true}
+            :ignore_install [:javascript]
+            :sync_install false})}

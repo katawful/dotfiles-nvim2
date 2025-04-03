@@ -54,7 +54,7 @@
             ((. (require :mason-lspconfig) :setup)
              {:ensure_installed [:fennel_language_server
                                  :lua_ls
-                                 :tsserver
+                                 :ts_ls
                                  :eslint
                                  :clangd]
               :opts {:inlay_hints {:enabled true}}})
@@ -67,7 +67,7 @@
                : capabilities
                :settings {:Lua {:workspace {:library runtime-path}
                                 :diagnostics {:globals ["vim"]}}}})
-            (lspconfig.tsserver.setup
+            (lspconfig.ts_ls.setup
               {: on_attach
                : capabilities})
             (lspconfig.clangd.setup

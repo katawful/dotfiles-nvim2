@@ -18,6 +18,10 @@
          2 #((. (require :fzf-lua) :files))
          :mode [:n]
          :desc "fzf-lua: Files in cwd"}
+        {1 (.. fzf-leader :F)
+         2 #((. (require :fzf-lua) :files) {:no_ignore true})
+         :mode [:n]
+         :desc "fzf-lua: Files with no ignore"}
         {1 (.. fzf-leader :b)
          2 #((. (require :fzf-lua) :buffers))
          :mode [:n]

@@ -1,6 +1,16 @@
 (local home-path :/home/kat)
 
 (local leader :<leader>n)
+(local blog (.. home-path :/Documents/Blog))
+(local fennel (.. home-path :/Documents/Fennel))
+(local oblivion (.. home-path :/Documents/Oblivion))
+(local personal (.. home-path :/Documents/Personal))
+(local programming (.. home-path :/Documents/Programming))
+(local obl-ref (.. home-path "/Repos/OBLIVION/oblivion-lang-ref"))
+(local wood (.. home-path :/Documents/Woodworking))
+(local academics (.. home-path :/Documents/Academics))
+(local config (.. home-path :/.config/nvim/docs))
+(local journal_folder "/Documents/Journal")
 
 [{1 :vhyrro/luarocks.nvim
   :config true
@@ -29,28 +39,17 @@
                     :core.concealer {}
                     :external.conceal-wrap {}
                     :core.ui.calendar {}
-                    :core.journal {:config {:journal_folder "Documents/neorg/Personal/journal"}}
-                    :core.dirman 
-                      {:config 
-                       {:workspaces {:blog (.. home-path
-                                               :/Documents/neorg/Blog)
-                                     :fennel (.. home-path
-                                              :/Documents/neorg/Fennel)
-                                     :oblivion (.. home-path
-                                                   :/Documents/neorg/Oblivion)
-                                     :personal (.. home-path
-                                                   :/Documents/neorg/Personal)
-                                     :programming (.. home-path
-                                                      :/Documents/neorg/Programming)
-                                     :obl-ref (.. home-path
-                                                  "/Repos/OBLIVION/oblivion-lang-ref")
-                                     :wood (.. home-path
-                                               :/Documents/neorg/Woodworking)
-                                     :academics (.. home-path
-                                                    :/Documents/neorg/Academics)
-                                     :config (.. home-path
-                                                 :/.config/nvim/docs)}
-                        :index "main.norg"}}
+                    :core.journal {:config {: journal_folder}}
+                    :core.dirman {:config {:workspaces {: blog
+                                                        : fennel
+                                                        : oblivion
+                                                        : personal
+                                                        : programming
+                                                        : obl-ref
+                                                        : wood
+                                                        : academics
+                                                        : config}
+                                              :index "main.norg"}}
                     :core.syntax {}
                     :core.integrations.treesitter {}
                     :core.keybinds {:config {:default_keybinds true}}

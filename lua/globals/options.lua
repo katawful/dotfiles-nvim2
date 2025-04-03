@@ -15,7 +15,7 @@ do
   vim.opt["hidden"] = false
   vim.opt["cmdheight"] = 2
 end
-do end (vim.opt_global.clipboard):append("unnamedplus")
+vim.opt_global.clipboard:append("unnamedplus")
 --[[ "Folding" ]]
 do
   vim.opt["foldmethod"] = "syntax"
@@ -46,14 +46,14 @@ do
 end
 --[[ "Extra" ]]
 vim.opt_global["inccommand"] = "nosplit"
-do end (vim.opt_local.nrformats):remove("octal")
+vim.opt_local.nrformats:remove("octal")
 vim.diagnostic.config({virtual_text = false})
 vim.lsp.inlay_hint.enable()
 --[[ "GUI" ]]
 if vim.g.neovide then
   vim.g["neovide_text_gamma"] = 0.8
   vim.g["neovide_text_contrast"] = 0.1
-  vim.g["neovide_remember_window_size"] = false
+  vim.g["neovide_remember_window_size"] = true
   vim.g["neovide_remember_window_position"] = false
   vim.g["neovide_cursor_vfx_particle_speed"] = 10
   vim.g["neovide_cursor_vfx_particle_density"] = 20

@@ -28,14 +28,14 @@ local function on_attach(client, bufnr)
   return 1
 end
 local function _2_()
-  do end (require("mason")).setup()
-  do end (require("mason-lspconfig")).setup({ensure_installed = {"fennel_language_server", "lua_ls", "tsserver", "eslint", "clangd"}, opts = {inlay_hints = {enabled = true}}})
+  require("mason").setup()
+  require("mason-lspconfig").setup({ensure_installed = {"fennel_language_server", "lua_ls", "ts_ls", "eslint", "clangd"}, opts = {inlay_hints = {enabled = true}}})
   local lspconfig = require("lspconfig")
   local runtime_path = vim.api.nvim_list_runtime_paths()
   table.insert(runtime_path, "/home/kat/Repos/NEOVIM/love2d.nvim/love2d/library")
-  local capabilities = (require("cmp_nvim_lsp")).default_capabilities()
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
   lspconfig.lua_ls.setup({on_attach = on_attach, capabilities = capabilities, settings = {Lua = {workspace = {library = runtime_path}, diagnostics = {globals = {"vim"}}}}})
-  lspconfig.tsserver.setup({on_attach = on_attach, capabilities = capabilities})
+  lspconfig.ts_ls.setup({on_attach = on_attach, capabilities = capabilities})
   lspconfig.clangd.setup({on_attach = on_attach, capabilities = capabilities})
   return lspconfig.fennel_language_server.setup({on_attach = on_attach, capabilities = capabilities, settings = {fennel = {workspace = {library = runtime_path, checkThirdParty = false}, diagnostics = {globals = {"vim", "love"}}}}})
 end

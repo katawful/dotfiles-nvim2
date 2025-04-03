@@ -58,6 +58,29 @@
                                "██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║    ██╔══██║██║╚██╗██║██║╚════██║██║   ██║██║     ██╔══╝  "
                                "██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║    ██║  ██║██║ ╚████║██║███████║╚██████╔╝███████╗███████╗"
                                "╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝ ╚═════╝ ╚══════╝╚══════╝"]}
+                :bee {:val ["      AAAA"
+                            "AAAAAA  AAAA"
+                            "AA    AAAA  AAAA        KKHHKKHHHH"
+                            "AAAA    AAAA  AA    HHBBKKKKKKKKKKKKKK"
+                            "  AAAAAA      AAKKBBHHKKBBYYBBKKKKHHKKKKKK"
+                            "      AAAA  BBAAKKHHBBBBKKKKBBYYBBHHHHKKKKKK"
+                            "        BBAABBKKYYYYHHKKYYYYKKKKBBBBBBZZZZZZ"
+                            "    YYBBYYBBKKYYYYYYYYYYKKKKBBKKAAAAZZOOZZZZ"
+                            "    XXXXYYYYBBYYYYYYYYBBBBBBKKKKBBBBAAAAZZZZ"
+                            "    XXXXUUUUYYYYBBYYYYYYBBKKBBZZOOAAZZOOAAAAAA"
+                            "  ZZZZZZXXUUXXXXYYYYYYYYBBAAAAZZOOOOAAOOZZZZAAAA"
+                            "  ZZUUZZXXUUUUXXXXUUXXFFFFFFFFAAAAOOZZAAZZZZ  AA"
+                            "    RRRRUUUUZZZZZZZZXXOOFFFFOOZZOOAAAAAAZZZZAA"
+                            "    CCSSUUUUZZXXXXZZXXOOFFFFOOZZOOOOZZOOAAAA"
+                            "    CCCCUUUUUUUUUURRRROOFFFFOOZZOOOOZZOOZZZZ"
+                            "    CCCCUUUUUUUUSSCCCCEEQQQQOOZZOOOOZZOOZZZZ"
+                            "    CCCCUUGGUUUUCCCCCCEEQQQQOOZZOOOOZZEEZZ"
+                            "    RRRRGGGGUUGGCCCCCCOOOOOOOOZZOOEEZZII"
+                            "      IIRRGGGGGGCCCCCCOOOOOOOOZZEEII"
+                            "            GGRRCCCCCCOOOOEEEEII  II"
+                            "                RRRRRREEEE  IIII"
+                            "                      II"]}
+  
                 :catsleep {:val ["                                                  "
                                  "                           |\\      _,,,---,,_     "
                                  "                     ZZZzz /,`.-'`'    -.  ;-;;,_ "
@@ -220,7 +243,7 @@
                   (P.create-function :update :u)]}]})
 
 (set theme.logo {:type "text"
-                 :val strings.header.val
+                 :val strings.bee.val
                  :opts {:position M.opts.position
                         :hl "Constant"}})
 
