@@ -14,12 +14,12 @@ end
 M["status-color"] = function(colors)
   do
     local statusline_hl = vim.api.nvim_get_hl(0, {name = "StatusLine"})
-    do end (statusline_hl)["fg"] = colors.pink
+    statusline_hl["fg"] = colors.pink
     statusline_hl["bg"] = colors.pink
     vim.api.nvim_set_hl(0, "StatusLine", statusline_hl)
   end
   local statusline_hl = vim.api.nvim_get_hl(0, {name = "StatusLineNC"})
-  do end (statusline_hl)["fg"] = colors.gray
+  statusline_hl["fg"] = colors.gray
   statusline_hl["bg"] = colors.gray
   return vim.api.nvim_set_hl(0, "StatusLineNC", statusline_hl)
 end
@@ -38,13 +38,13 @@ M["show-element?"] = function(number)
   return (#vim.api.nvim_list_tabpages() >= number)
 end
 M["hl-current-line"] = function(fg, _3fbg, _3fattr)
-  if ((vim.api.nvim_win_get_cursor(0))[1] == vim.v.lnum) then
+  if (vim.api.nvim_win_get_cursor(0)[1] == vim.v.lnum) then
     local output
     local _4_
     do
       local t_3_ = fg
       if (nil ~= t_3_) then
-        t_3_ = (t_3_).new
+        t_3_ = t_3_.new
       else
       end
       _4_ = t_3_
@@ -53,7 +53,7 @@ M["hl-current-line"] = function(fg, _3fbg, _3fattr)
     do
       local t_6_ = _3fbg
       if (nil ~= t_6_) then
-        t_6_ = (t_6_).new
+        t_6_ = t_6_.new
       else
       end
       _7_ = t_6_
@@ -63,7 +63,7 @@ M["hl-current-line"] = function(fg, _3fbg, _3fattr)
       local function _10_()
         local t_9_ = _3fattr
         if (nil ~= t_9_) then
-          t_9_ = (t_9_).new
+          t_9_ = t_9_.new
         else
         end
         return t_9_
@@ -80,7 +80,7 @@ M["hl-current-line"] = function(fg, _3fbg, _3fattr)
     do
       local t_13_ = fg
       if (nil ~= t_13_) then
-        t_13_ = (t_13_).default
+        t_13_ = t_13_.default
       else
       end
       _14_ = t_13_
@@ -89,7 +89,7 @@ M["hl-current-line"] = function(fg, _3fbg, _3fattr)
     do
       local t_16_ = _3fbg
       if (nil ~= t_16_) then
-        t_16_ = (t_16_).default
+        t_16_ = t_16_.default
       else
       end
       _17_ = t_16_
@@ -99,7 +99,7 @@ M["hl-current-line"] = function(fg, _3fbg, _3fattr)
       local function _20_()
         local t_19_ = _3fattr
         if (nil ~= t_19_) then
-          t_19_ = (t_19_).default
+          t_19_ = t_19_.default
         else
         end
         return t_19_
@@ -118,7 +118,7 @@ M["get-window-bounds"] = function()
   return {start = start, ["end"] = _end}
 end
 M["size-of-lnum"] = function()
-  local _end = (M["get-window-bounds"]())["end"]
+  local _end = M["get-window-bounds"]()["end"]
   return #tostring(_end)
 end
 return M

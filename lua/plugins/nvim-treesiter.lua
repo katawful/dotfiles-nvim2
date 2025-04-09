@@ -15,4 +15,4 @@ local function _2_()
   end
   return require("nvim-treesitter.configs").setup({auto_install = true, ensure_installed = ensure_installed, highlight = {disable = _3_, enable = true, additional_vim_regex_highlighting = false}, ignore_install = {"javascript"}, sync_install = false})
 end
-return {"nvim-treesitter/nvim-treesitter", main = "nvim-treesitter.configs", build = "TSUpdate", dependencies = {"nushell/tree-sitter-nu"}, config = _2_}
+return {"nvim-treesitter/nvim-treesitter", main = "nvim-treesitter.configs", build = ":TSUpdate", dependencies = {"nushell/tree-sitter-nu"}, config = _2_}

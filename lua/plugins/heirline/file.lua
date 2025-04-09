@@ -18,7 +18,7 @@ M.block = {init = _2_}
 local function _3_(_241)
   local filename = vim.fn.expand("%:p")
   local extension = vim.fn.fnamemodify(filename, ":e")
-  _241.icon, _241.icon_color = (require("nvim-web-devicons")).get_icon_color(filename, extension, {default = true})
+  _241.icon, _241.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension, {default = true})
   return nil
 end
 local function _4_(_241)

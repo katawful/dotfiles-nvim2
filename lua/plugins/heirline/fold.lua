@@ -12,29 +12,33 @@ local delimiter = config.providers.delimiter
 local M = {}
 local colors = config.colors
 local function _2_()
-  return (vim.opt.foldenable):get()
+  return vim.opt.foldenable:get()
 end
 local function _3_()
   local lnum = tostring(vim.v.lnum)
-  local fillchars = (vim.opt.fillchars):get()
+  local fillchars = vim.opt.fillchars:get()
   local foldchars
-  local function _4_()
-    local t_5_ = fillchars.foldopen
-    return t_5_
+  local _5_
+  do
+    local t_4_ = fillchars.foldopen
+    _5_ = t_4_
   end
-  local function _6_()
-    local t_7_ = fillchars.foldclosed
-    return t_7_
+  local _7_
+  do
+    local t_6_ = fillchars.foldclosed
+    _7_ = t_6_
   end
-  local function _8_()
-    local t_9_ = fillchars.foldsep
-    return t_9_
+  local _9_
+  do
+    local t_8_ = fillchars.foldsep
+    _9_ = t_8_
   end
-  local function _10_()
-    local t_11_ = fillchars.vert
-    return t_11_
+  local _11_
+  do
+    local t_10_ = fillchars.vert
+    _11_ = t_10_
   end
-  foldchars = {open = (_4_() or icons.ui["arrow-down"]), closed = (_6_() or icons.ui["arrow-right"]), sep = (_8_() or " "), vert = (_10_() or icons.ui.vert)}
+  foldchars = {open = (_5_ or icons.ui["arrow-down"]), closed = (_7_ or icons.ui["arrow-right"]), sep = (_9_ or " "), vert = (_11_ or icons.ui.vert)}
   local fold_start = vim.fn.foldclosed(lnum)
   local fold_end = vim.fn.foldclosedend(lnum)
   local fold_level = vim.fn.foldlevel(lnum)

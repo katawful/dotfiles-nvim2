@@ -56,27 +56,28 @@ local function get_filetype_color(ext)
     do
       local t_6_ = theme
       if (nil ~= t_6_) then
-        t_6_ = (t_6_).icons_by_file_extension
+        t_6_ = t_6_.icons_by_file_extension
       else
       end
       t_5_ = t_6_
     end
     if (nil ~= t_5_) then
-      t_5_ = (t_5_)[ext]
+      t_5_ = t_5_[ext]
     else
     end
     icon = t_5_
   end
   if icon then
-    local function _10_()
+    local _10_
+    do
       local t_9_ = icon
       if (nil ~= t_9_) then
-        t_9_ = (t_9_).name
+        t_9_ = t_9_.name
       else
       end
-      return t_9_
+      _10_ = t_9_
     end
-    return ("DevIcon" .. _10_())
+    return ("DevIcon" .. _10_)
   else
     return "DevIconDefault"
   end
@@ -90,37 +91,37 @@ local function button(keymap, val, rhs, rhs_opts, _3fopts)
   local keymap_trimmed = keymap:gsub("%s", ""):gsub(leader, "<leader>")
   local opts
   do
-    local tbl_14_auto = {}
+    local tbl_16_auto = {}
     for k, v in pairs(M["button-opts"]) do
-      local k_15_auto, v_16_auto = nil, nil
+      local k_17_auto, v_18_auto = nil, nil
       local _14_
       do
         local t_13_ = _3fopts
         if (nil ~= t_13_) then
-          t_13_ = (t_13_)[k]
+          t_13_ = t_13_[k]
         else
         end
         _14_ = t_13_
       end
       if not _14_ then
-        k_15_auto, v_16_auto = k, v
+        k_17_auto, v_18_auto = k, v
       else
         local function _17_()
           local t_16_ = _3fopts
           if (nil ~= t_16_) then
-            t_16_ = (t_16_)[k]
+            t_16_ = t_16_[k]
           else
           end
           return t_16_
         end
-        k_15_auto, v_16_auto = k, _17_()
+        k_17_auto, v_18_auto = k, _17_()
       end
-      if ((k_15_auto ~= nil) and (v_16_auto ~= nil)) then
-        tbl_14_auto[k_15_auto] = v_16_auto
+      if ((k_17_auto ~= nil) and (v_18_auto ~= nil)) then
+        tbl_16_auto[k_17_auto] = v_18_auto
       else
       end
     end
-    opts = tbl_14_auto
+    opts = tbl_16_auto
   end
   opts.shortcut = keymap
   local _22_
@@ -220,37 +221,37 @@ M.mru = function(dir, start, _3famount, _3fopts)
   _G.assert((nil ~= dir), "Missing argument dir on /home/kat/.config/nvim/fnl/plugins/alpha/utils.fnl:160")
   local opts
   if _3fopts then
-    local tbl_14_auto = {}
+    local tbl_16_auto = {}
     for k, v in pairs(M["mru-opts"]) do
-      local k_15_auto, v_16_auto = nil, nil
+      local k_17_auto, v_18_auto = nil, nil
       local _33_
       do
         local t_32_ = _3fopts
         if (nil ~= t_32_) then
-          t_32_ = (t_32_)[k]
+          t_32_ = t_32_[k]
         else
         end
         _33_ = t_32_
       end
       if not _33_ then
-        k_15_auto, v_16_auto = k, v
+        k_17_auto, v_18_auto = k, v
       else
         local function _36_()
           local t_35_ = _3fopts
           if (nil ~= t_35_) then
-            t_35_ = (t_35_)[k]
+            t_35_ = t_35_[k]
           else
           end
           return t_35_
         end
-        k_15_auto, v_16_auto = k, _36_()
+        k_17_auto, v_18_auto = k, _36_()
       end
-      if ((k_15_auto ~= nil) and (v_16_auto ~= nil)) then
-        tbl_14_auto[k_15_auto] = v_16_auto
+      if ((k_17_auto ~= nil) and (v_18_auto ~= nil)) then
+        tbl_16_auto[k_17_auto] = v_18_auto
       else
       end
     end
-    opts = tbl_14_auto
+    opts = tbl_16_auto
   else
     opts = M["mru-opts"]
   end
@@ -265,7 +266,7 @@ M.mru = function(dir, start, _3famount, _3fopts)
   do
     local t_42_ = opts
     if (nil ~= t_42_) then
-      t_42_ = (t_42_).width
+      t_42_ = t_42_.width
     else
     end
     _43_ = t_42_
@@ -286,30 +287,31 @@ M.mru = function(dir, start, _3famount, _3fopts)
       dir_cond = vim.startswith(v, dir)
     end
     local ignore = ((opts.ignore and opts.ignore(v, get_extension(v))) or false)
-    local function _47_()
+    local _47_
+    do
       local result_9_auto = vim.fn.filereadable(v)
       if (result_9_auto == 0) then
-        return false
+        _47_ = false
       else
-        return true
+        _47_ = true
       end
     end
-    if ((_47_() and dir_cond) and not ignore) then
+    if ((_47_ and dir_cond) and not ignore) then
       table.insert(oldfiles, v)
     else
     end
   end
   for i = 1, amount do
-    local _51_
+    local _52_
     do
-      local t_50_ = oldfiles
-      if (nil ~= t_50_) then
-        t_50_ = (t_50_)[i]
+      local t_51_ = oldfiles
+      if (nil ~= t_51_) then
+        t_51_ = t_51_[i]
       else
       end
-      _51_ = t_50_
+      _52_ = t_51_
     end
-    if not _51_ then break end
+    if not _52_ then break end
     local keymap = tostring((start + (i - 1)))
     local file_path
     if dir then
@@ -331,7 +333,7 @@ M.mru = function(dir, start, _3famount, _3fopts)
       short_file_path = target
     end
     local button_element = file_button(oldfiles[i], keymap, short_file_path, opts.autocd)
-    do end (val)[i] = button_element
+    val[i] = button_element
   end
   return {opts = opts, type = "group", val = val}
 end
@@ -339,43 +341,43 @@ M["show-commits"] = function(start, _3famount, _3fopts)
   _G.assert((nil ~= start), "Missing argument start on /home/kat/.config/nvim/fnl/plugins/alpha/utils.fnl:205")
   local opts
   if _3fopts then
-    local tbl_14_auto = {}
+    local tbl_16_auto = {}
     for k, v in pairs(M["commit-opts"]) do
-      local k_15_auto, v_16_auto = nil, nil
-      local _57_
+      local k_17_auto, v_18_auto = nil, nil
+      local _58_
       do
-        local t_56_ = _3fopts
-        if (nil ~= t_56_) then
-          t_56_ = (t_56_)[k]
+        local t_57_ = _3fopts
+        if (nil ~= t_57_) then
+          t_57_ = t_57_[k]
         else
         end
-        _57_ = t_56_
+        _58_ = t_57_
       end
-      if not _57_ then
-        k_15_auto, v_16_auto = k, v
+      if not _58_ then
+        k_17_auto, v_18_auto = k, v
       else
-        k_15_auto, v_16_auto = k, (_3fopts)[k]
+        k_17_auto, v_18_auto = k, _3fopts[k]
       end
-      if ((k_15_auto ~= nil) and (v_16_auto ~= nil)) then
-        tbl_14_auto[k_15_auto] = v_16_auto
+      if ((k_17_auto ~= nil) and (v_18_auto ~= nil)) then
+        tbl_16_auto[k_17_auto] = v_18_auto
       else
       end
     end
-    opts = tbl_14_auto
+    opts = tbl_16_auto
   else
     opts = M["commit-opts"]
   end
   local width
-  local _63_
+  local _64_
   do
-    local t_62_ = opts
-    if (nil ~= t_62_) then
-      t_62_ = (t_62_).width
+    local t_63_ = opts
+    if (nil ~= t_63_) then
+      t_63_ = t_63_.width
     else
     end
-    _63_ = t_62_
+    _64_ = t_63_
   end
-  if _63_ then
+  if _64_ then
     width = opts.width
   else
     width = 48
@@ -386,16 +388,16 @@ M["show-commits"] = function(start, _3famount, _3fopts)
   else
     amount = 10
   end
-  local _68_
+  local _69_
   do
-    local t_67_ = opts
-    if (nil ~= t_67_) then
-      t_67_ = (t_67_).hl
+    local t_68_ = opts
+    if (nil ~= t_68_) then
+      t_68_ = t_68_.hl
     else
     end
-    _68_ = t_67_
+    _69_ = t_68_
   end
-  if not _68_ then
+  if not _69_ then
     opts["hl"] = {}
   else
   end
@@ -439,7 +441,7 @@ M["show-commits"] = function(start, _3famount, _3fopts)
       local pos = {["hash-start"] = hash_start, ["hash-end"] = hash_end, ["commit-text-start"] = commit_text_start, ["commit-text-end"] = commit_text_end}
       local button_element = commit_button(hash, keymap, commit_text, command, pos)
       table.insert(opts.hl, hl)
-      do end (val)[i] = button_element
+      val[i] = button_element
     else
     end
   end

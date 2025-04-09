@@ -6,12 +6,12 @@ local function variable_naming(args)
   do
     local t_1_ = args
     if (nil ~= t_1_) then
-      t_1_ = (t_1_)[1]
+      t_1_ = t_1_[1]
     else
     end
     _2_ = t_1_
   end
-  mod_name = (_2_)[1]
+  mod_name = _2_[1]
   local var_name = (string.upper(mod_name:sub(1, 1)) .. string.sub(mod_name, 2, -1))
   return sn(nil, {t(var_name)})
 end
@@ -21,12 +21,12 @@ local function function_arg_docstring(args)
   do
     local t_4_ = args
     if (nil ~= t_4_) then
-      t_4_ = (t_4_)[1]
+      t_4_ = t_4_[1]
     else
     end
     _5_ = t_4_
   end
-  arguments = str.split((_5_)[1], " ")
+  arguments = str.split(_5_[1], " ")
   local arguments0
   if (arguments[1] == "") then
     arguments0 = {}
@@ -37,7 +37,7 @@ local function function_arg_docstring(args)
   local insert_nodes = {}
   if (node_length > 0) then
     for x = 1, node_length do
-      table.insert(insert_nodes, sn(x, {t({"", ""}), t(("@" .. (arguments0)[x] .. ": ")), i(1, "type"), t(" -- "), i(2, "description")}))
+      table.insert(insert_nodes, sn(x, {t({"", ""}), t(("@" .. arguments0[x] .. ": ")), i(1, "type"), t(" -- "), i(2, "description")}))
     end
   else
   end

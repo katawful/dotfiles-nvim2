@@ -52,9 +52,9 @@ end
 M["tabline-close-button"] = {{provider = " "}, {provider = icons.ui.close, on_click = {callback = _9_, minwid = _11_, name = "heirline_tabline_close_buffer_callback"}}, condition = _12_}
 local function _13_(_241)
   if _241.is_active then
-    return (heir_utils.get_highlight("TabLineSel")).bg
+    return heir_utils.get_highlight("TabLineSel").bg
   else
-    return (heir_utils.get_highlight("TabLine")).bg
+    return heir_utils.get_highlight("TabLine").bg
   end
 end
 local function _15_(_241)

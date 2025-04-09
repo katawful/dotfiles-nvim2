@@ -19,8 +19,8 @@ local function line(_plugin, _opts)
   local raw = {}
   config.colors = config["gen-colors"]()
   local colors = config.colors
-  do end (require("heirline")).load_colors(config.colors)
-  do end (vim.opt_global)["showtabline"] = 2
+  require("heirline").load_colors(config.colors)
+  vim.opt_global["showtabline"] = 2
   do
     local heir = vim.api.nvim_create_augroup("UserHeirline", {clear = true})
     local function _2_()
@@ -48,7 +48,7 @@ local function line(_plugin, _opts)
   components.filedetails = file.filedetails
   raw.fold = fold.component
   local function _6_()
-    return (vim.opt.number):get()
+    return vim.opt.number:get()
   end
   local function _7_()
     local lnum = tostring(vim.v.lnum)
@@ -71,7 +71,7 @@ local function line(_plugin, _opts)
   end
   raw.lnum = {condition = _6_, provider = _7_, on_click = {callback = _9_, name = "heirline_statuscolumn_number_callback"}, hl = _10_}
   local function _11_()
-    return (vim.opt.relativenumber):get()
+    return vim.opt.relativenumber:get()
   end
   local function _12_()
     local relnum = tostring(vim.v.relnum)
@@ -93,17 +93,17 @@ local function line(_plugin, _opts)
   raw.relnum = {condition = _11_, provider = _12_, on_click = {callback = _14_, name = "heirline_statuscolumn_number_callback"}, hl = _15_}
   local function _16_(_241)
     do
-      local tbl_17_auto = {}
-      local i_18_auto = #tbl_17_auto
+      local tbl_21_auto = {}
+      local i_22_auto = 0
       for _, mark in ipairs(vim.fn.getmarklist(vim.fn.bufname())) do
-        local val_19_auto = {name = string.sub(mark.mark, 2, 2), buf = mark.pos[1], lnum = mark.pos[2], col = mark.pos[3]}
-        if (nil ~= val_19_auto) then
-          i_18_auto = (i_18_auto + 1)
-          do end (tbl_17_auto)[i_18_auto] = val_19_auto
+        local val_23_auto = {name = string.sub(mark.mark, 2, 2), buf = mark.pos[1], lnum = mark.pos[2], col = mark.pos[3]}
+        if (nil ~= val_23_auto) then
+          i_22_auto = (i_22_auto + 1)
+          tbl_21_auto[i_22_auto] = val_23_auto
         else
         end
       end
-      _241.marks = tbl_17_auto
+      _241.marks = tbl_21_auto
     end
     return nil
   end
@@ -114,88 +114,83 @@ local function line(_plugin, _opts)
       return (_241.lnum == mouse_lnum)
     end
     mark = n.first(n.filter(_19_, self.marks))
-    local function _20_()
-      return not n["empty?"](mark)
-    end
-    if (_20_() and (mouse_lnum == mark.lnum)) then
+    if (not n["empty?"](mark) and (mouse_lnum == mark.lnum)) then
       return vim.api.nvim_win_set_cursor(0, {mark.lnum, (mark.col - 1)})
     else
       return vim.api.nvim_win_set_cursor(0, {mouse_lnum, 0})
     end
   end
-  local function _22_()
-    return (((vim.opt.number):get() or (vim.opt.relativenumber):get()) or ((vim.opt.number):get() and (vim.opt.relativenumber):get()))
+  local function _21_()
+    return ((vim.opt.number:get() or vim.opt.relativenumber:get()) or (vim.opt.number:get() and vim.opt.relativenumber:get()))
   end
-  local function _23_()
+  local function _22_()
     return utils["hl-current-line"]({default = config.colors.blue, new = config.colors.dark_blue}, nil, {default = {bold = false}, new = {bold = true}})
   end
-  local function _24_(_241)
+  local function _23_(_241)
     local mark
-    local function _25_(_2410)
+    local function _24_(_2410)
       return (_2410.lnum == vim.v.lnum)
     end
-    mark = n.first(n.filter(_25_, _241.marks))
+    mark = n.first(n.filter(_24_, _241.marks))
     if not n["empty?"](mark) then
       return mark.name
     else
       return " "
     end
   end
-  raw.marks = {init = _16_, on_click = {callback = _18_, name = "heirline_statuscolumn_marks_callback"}, condition = _22_, hl = _23_, provider = _24_}
-  local function _27_(_241)
+  raw.marks = {init = _16_, on_click = {callback = _18_, name = "heirline_statuscolumn_marks_callback"}, condition = _21_, hl = _22_, provider = _23_}
+  local function _26_(_241)
     _241.sign = lsp["get-sign"](lsp["get-name"](), vim.v.lnum)
     return nil
   end
-  local function _28_()
+  local function _27_()
     local mouse_lnum = vim.fn.getmousepos().line
     vim.api.nvim_win_set_cursor(0, {mouse_lnum, 0})
     return vim.diagnostic.open_float({source = true, border = "solid"})
   end
-  local function _29_(_241)
-    local _30_ = lsp["get-sign-icon"](_241.sign)
-    if (_30_ == "E") then
+  local function _28_(_241)
+    local _29_ = lsp["get-sign-icon"](_241.sign)
+    if (_29_ == "E") then
       return icons.lsp.error
-    elseif (_30_ == "H") then
+    elseif (_29_ == "H") then
       return icons.lsp.hint
-    elseif (_30_ == "I") then
+    elseif (_29_ == "I") then
       return icons.lsp.info
-    elseif (_30_ == "O") then
+    elseif (_29_ == "O") then
       return icons.lsp.other
-    elseif (_30_ == "W") then
+    elseif (_29_ == "W") then
       return icons.lsp.warn
-    elseif true then
-      local _ = _30_
-      return " "
     else
-      return nil
+      local _ = _29_
+      return " "
     end
   end
-  local function _32_(_241)
+  local function _31_(_241)
     return lsp["get-sign-type"](_241.sign)
   end
-  local function _33_()
+  local function _32_()
     return conditions.lsp_attached()
   end
-  raw["lsp-signs"] = {init = _27_, on_click = {name = "heirline_statuscolumn_lsp_callback", callback = _28_}, provider = _29_, hl = _32_, condition = _33_}
+  raw["lsp-signs"] = {init = _26_, on_click = {name = "heirline_statuscolumn_lsp_callback", callback = _27_}, provider = _28_, hl = _31_, condition = _32_}
   components.numbers = {raw.lnum, raw.marks, raw.relnum}
   raw.gitsigns = git.component
-  local function _34_()
-    return (vim.opt.foldenable):get()
+  local function _33_()
+    return vim.opt.foldenable:get()
   end
-  local function _35_()
+  local function _34_()
     return utils["hl-current-line"](nil, {default = config.colors.bright_bg, new = config.colors.normal_bg})
   end
-  components.statuscolumn = {raw.fold, {provider = " ", condition = _34_}, components.numbers, raw.gitsigns, raw["lsp-signs"], hl = _35_}
-  local function _36_()
+  components.statuscolumn = {raw.fold, {provider = " ", condition = _33_}, components.numbers, raw.gitsigns, raw["lsp-signs"], hl = _34_}
+  local function _35_()
     if conditions.is_active() then
       return "StatusLine"
     else
       return "StatusLineNC"
     end
   end
-  return {tabline = components.tabline, statusline = {{components["vi-mode"], condition = conditions.is_active}, components.spell, components.filename, config.providers.even, {components.filedetails, condition = conditions.is_active}, static = vi_mode.static, hl = _36_, fallthrough = true}, statuscolumn = components.statuscolumn}
+  return {tabline = components.tabline, statusline = {{components["vi-mode"], condition = conditions.is_active}, components.spell, components.filename, config.providers.even, {components.filedetails, condition = conditions.is_active}, static = vi_mode.static, hl = _35_, fallthrough = true}, statuscolumn = components.statuscolumn}
 end
-local function _38_(_241, _242)
+local function _37_(_241, _242)
   return line(_241, _242)
 end
-return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _38_}
+return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _37_}

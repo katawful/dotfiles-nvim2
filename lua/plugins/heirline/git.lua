@@ -49,7 +49,7 @@ M["inside-hunk?"] = function(lnum, start, _end)
 end
 local function _4_(_241)
   do
-    local hunks = (require("gitsigns")).get_hunks()
+    local hunks = require("gitsigns").get_hunks()
     local result = false
     local out = nil
     if hunks then
@@ -63,14 +63,13 @@ local function _4_(_241)
             out = hunk_mod
           else
           end
-        elseif true then
+        else
           local _0 = _5_
           if M["inside-hunk?"](vim.v.lnum, hunk_mod.start, hunk_mod["end"]) then
             result = true
             out = hunk_mod
           else
           end
-        else
         end
       end
     else
@@ -96,13 +95,13 @@ local function _13_(_241)
     do
       local t_16_ = _241
       if (nil ~= t_16_) then
-        t_16_ = (t_16_).hunk
+        t_16_ = t_16_.hunk
       else
       end
       t_15_ = t_16_
     end
     if (nil ~= t_15_) then
-      t_15_ = (t_15_).type
+      t_15_ = t_15_.type
     else
     end
     _14_ = t_15_

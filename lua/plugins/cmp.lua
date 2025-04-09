@@ -7,7 +7,7 @@ local function _1_()
     return _2420
   end
   local function _3_(_2410)
-    return (require("luasnip")).lsp_expand(_2410.body)
+    return require("luasnip").lsp_expand(_2410.body)
   end
   local function _4_(_2410)
     if luasnip.jumpable(1) then

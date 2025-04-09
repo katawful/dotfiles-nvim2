@@ -6,7 +6,7 @@ local M = {}
 local colors = config.colors
 local function _1_(_241)
   local mode = ((conditions.is_active and vim.fn.mode()) or "n")
-  return (_241.mode_colors_map)[mode]
+  return _241.mode_colors_map[mode]
 end
 M.static = {mode_colors_map = {n = config.colors.purple, i = config.colors.blue, v = config.colors.red, V = config.colors.red, ["\22"] = config.colors.cyan, c = config.colors.green, s = config.colors.light_red, S = config.colors.light_red, ["\19"] = config.colors.purple, R = config.colors.orange, r = config.colors.orange, ["!"] = config.colors.red, t = config.colors.red}, mode_color = _1_}
 local function _2_(_241)
@@ -14,7 +14,7 @@ local function _2_(_241)
   return nil
 end
 local function _3_(_241)
-  return string.format("%s", (_241.mode_names)[_241.mode])
+  return string.format("%s", _241.mode_names[_241.mode])
 end
 local function _4_(_241)
   return {bg = _241:mode_color(), fg = "normal_fg", bold = true}
