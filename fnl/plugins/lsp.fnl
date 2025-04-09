@@ -4,7 +4,7 @@
 
 (import-macros map :nvim-anisole.macros.maps)
 
-(var M nil)
+(var M {})
 
 (fn on_attach [client bufnr]
   (set vim.opt_local.omnifunc "v:lua.vim.lsp.omnifunc")

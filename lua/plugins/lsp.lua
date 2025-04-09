@@ -2,7 +2,7 @@
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local sys = autoload("globals.init")
-local M = nil
+local M = {}
 local function on_attach(client, bufnr)
   vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
   vim.opt_local.signcolumn = "yes"
