@@ -4,8 +4,6 @@
 
 (var M {})
 
-(if (= sys.home :Kat-Arch)
-    (set M {:dir "~/Repos/NEOVIM/nvim-anisole-macros/"})
-    (set M [:katawful/nvim-anisole-macros/]))
+(set M {1 :katawful/nvim-anisole-macros})
 
 M

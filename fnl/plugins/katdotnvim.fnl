@@ -3,8 +3,6 @@
 (local sys (autoload :globals.init))
 
 (var M {})
-(vim.inspect sys.home)
-(vim.inspect :Kat-Arch)
 
 (if (= sys.home :Kat-Arch)
     (set M {:enabled true

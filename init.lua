@@ -38,11 +38,7 @@ local function nfnl_config()
 end
 --[[ "Bootstrap Lazy and fennel environment" ]]
 lazy_install()
-if (string.sub(vim.fn.system("uname -n"), 1, -2) == "Kat-Arch") then
-  ensure(M.path.macros, "nvim-anisole-macros", true)
-else
-  ensure("katawful/nvim-anisole-macros", "nvim-anisole-macros")
-end
+ensure("katawful/nvim-anisole-macros", "nvim-anisole-macros")
 ensure("Olical/nfnl", "nfnl")
 nfnl_config()
 vim.opt.runtimepath:prepend(M.path.lazy)

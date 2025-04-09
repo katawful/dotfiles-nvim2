@@ -3,8 +3,6 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local sys = autoload("globals.init")
 local M = {}
-vim.inspect(sys.home)
-vim.inspect("Kat-Arch")
 if (sys.home == "Kat-Arch") then
   local function _2_()
     return vim.cmd.colorscheme("kat.nvim")

@@ -44,9 +44,9 @@
 
 (comment "Bootstrap Lazy and fennel environment")
 (lazy-install)
-(if (= (string.sub (vim.fn.system "uname -n") 1 -2) :Kat-Arch)
-    (ensure M.path.macros :nvim-anisole-macros true)
-    (ensure :katawful/nvim-anisole-macros :nvim-anisole-macros))
+; (if (= (string.sub (vim.fn.system "uname -n") 1 -2) :Kat-Arch)
+;     (ensure M.path.macros :nvim-anisole-macros true)
+(ensure :katawful/nvim-anisole-macros :nvim-anisole-macros)
 (ensure :Olical/nfnl :nfnl)
 (nfnl-config)
 (vim.opt.runtimepath:prepend M.path.lazy)
