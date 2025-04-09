@@ -184,8 +184,6 @@
                    1 components.filedetails}}
    :statuscolumn components.statuscolumn})
 
-{:dependencies [{:dir "~/Repos/NEOVIM/katdotnvim/"}
-                [:nvim-tree/nvim-web-devicons]]
- :priority 1
+{:priority 1
  :opts #(line $1 $2)
  1 :rebelot/heirline.nvim}

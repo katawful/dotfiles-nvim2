@@ -193,4 +193,4 @@ end
 local function _37_(_241, _242)
   return line(_241, _242)
 end
-return {"rebelot/heirline.nvim", dependencies = {{dir = "~/Repos/NEOVIM/katdotnvim/"}, {"nvim-tree/nvim-web-devicons"}}, priority = 1, opts = _37_}
+return {"rebelot/heirline.nvim", priority = 1, opts = _37_}
