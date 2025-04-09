@@ -9,7 +9,7 @@
 
 (comment "Install lazy for later. This is the recommended install method, not fennel specific")
 (fn lazy-install []
-  (when (not (vim.loop.fs_stat M.path.lazy))
+  (when (not (vim.uv.fs_stat M.path.lazy))
     (vim.fn.system [:git
                     :clone
                     "--filter=blob:none"
@@ -38,13 +38,15 @@
 
 (comment "nfnl requires a config file to work, simply add that")
 (fn nfnl-config []
-  (when (not (vim.loop.fs_stat M.path.nfnl))
+  (when (not (vim.uv.fs_stat M.path.nfnl))
     (vim.fn.system (.. "touch " M.path.nfnl))
     (vim.fn.system (.. "bash -c 'echo \"{}\" >> " M.path.nfnl "'"))))
 
 (comment "Bootstrap Lazy and fennel environment")
 (lazy-install)
-(ensure M.path.macros :nvim-anisole-macros true)
+(if (= (string.sub (vim.fn.system "uname -n") 1 -2) :Kat-Arch)
+    (ensure M.path.macros :nvim-anisole-macros true)
+    (ensure :katawful/nvim-anisole-macros :nvim-anisole-macros))
 (ensure :Olical/nfnl :nfnl)
 (nfnl-config)
 (vim.opt.runtimepath:prepend M.path.lazy)
