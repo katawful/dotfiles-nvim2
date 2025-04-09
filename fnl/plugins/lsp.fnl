@@ -1,4 +1,10 @@
+;;; Autoload -- improves performance for this plugin
+(local {: autoload} (require :nfnl.module))
+(local sys (autoload :globals.init))
+
 (import-macros map :nvim-anisole.macros.maps)
+
+(var M nil)
 
 (fn on_attach [client bufnr]
   (set vim.opt_local.omnifunc "v:lua.vim.lsp.omnifunc")
@@ -41,41 +47,44 @@
                   {:buffer true :noremap true :silent true}])
   1)
 
-{1 :williamboman/mason.nvim
- :dependencies ["williamboman/mason-lspconfig.nvim"
-                "neovim/nvim-lspconfig"]
- :ft [:fennel
-      :c
-      :cpp
-      :lua
-      :typescript
-      :javascript]
- :config #(do ((. (require :mason) :setup))
-            ((. (require :mason-lspconfig) :setup)
-             {:ensure_installed [:fennel_language_server
-                                 :lua_ls
-                                 :ts_ls
-                                 :eslint
-                                 :clangd]
-              :opts {:inlay_hints {:enabled true}}})
-            (local lspconfig (require :lspconfig))
-            (local runtime-path (vim.api.nvim_list_runtime_paths))
-            (table.insert runtime-path "/home/kat/Repos/NEOVIM/love2d.nvim/love2d/library")
-            (local capabilities ((. (require :cmp_nvim_lsp) :default_capabilities)))
-            (lspconfig.lua_ls.setup
-              {: on_attach
-               : capabilities
-               :settings {:Lua {:workspace {:library runtime-path}
-                                :diagnostics {:globals ["vim"]}}}})
-            (lspconfig.ts_ls.setup
-              {: on_attach
-               : capabilities})
-            (lspconfig.clangd.setup
-              {: on_attach
-               : capabilities})
-            (lspconfig.fennel_language_server.setup
-             {: on_attach
-              : capabilities
-              :settings {:fennel {:workspace {:library runtime-path
-                                              :checkThirdParty false}
-                                  :diagnostics {:globals ["vim" "love"]}}}}))} 
+(if (= sys.home :Kat-Arch)
+    (set M {1 :williamboman/mason.nvim
+            :dependencies ["williamboman/mason-lspconfig.nvim"
+                           "neovim/nvim-lspconfig"]
+            :ft [:fennel
+                 :c
+                 :cpp
+                 :lua
+                 :typescript
+                 :javascript]
+            :config #(do ((. (require :mason) :setup))
+                       ((. (require :mason-lspconfig) :setup)
+                        {:ensure_installed [:fennel_language_server
+                                            :lua_ls
+                                            :ts_ls
+                                            :eslint
+                                            :clangd]
+                         :opts {:inlay_hints {:enabled true}}})
+                       (local lspconfig (require :lspconfig))
+                       (local runtime-path (vim.api.nvim_list_runtime_paths))
+                       (table.insert runtime-path "/home/kat/Repos/NEOVIM/love2d.nvim/love2d/library")
+                       (local capabilities ((. (require :cmp_nvim_lsp) :default_capabilities)))
+                       (lspconfig.lua_ls.setup
+                         {: on_attach
+                          : capabilities
+                          :settings {:Lua {:workspace {:library runtime-path}
+                                           :diagnostics {:globals ["vim"]}}}})
+                       (lspconfig.ts_ls.setup
+                         {: on_attach
+                          : capabilities})
+                       (lspconfig.clangd.setup
+                         {: on_attach
+                          : capabilities})
+                       (lspconfig.fennel_language_server.setup
+                        {: on_attach
+                         : capabilities
+                         :settings {:fennel {:workspace {:library runtime-path
+                                                         :checkThirdParty false}
+                                             :diagnostics {:globals ["vim" "love"]}}}}))}))
+
+M
