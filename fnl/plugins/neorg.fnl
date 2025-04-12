@@ -1,16 +1,11 @@
-(local home-path :/home/kat)
+(local sys (require :globals.init))
 
 (local leader :<leader>n)
-(local blog (.. home-path :/Documents/Blog))
-(local fennel (.. home-path :/Documents/Fennel))
-(local oblivion (.. home-path :/Documents/Oblivion))
-(local personal (.. home-path :/Documents/Personal))
-(local programming (.. home-path :/Documents/Programming))
-(local obl-ref (.. home-path "/Repos/OBLIVION/oblivion-lang-ref"))
-(local wood (.. home-path :/Documents/Woodworking))
-(local academics (.. home-path :/Documents/Academics))
-(local config (.. home-path :/.config/nvim/docs))
-(local journal_folder "/Documents/Journal")
+(local fennel (.. sys.git-path :/NOTES/Fennel))
+(local oblivion (.. sys.git-path :/NOTES/Oblivion))
+(local programming (.. sys.git-path :/NOTES/Programming))
+(local academics (.. sys.git-path :/NOTES/Academics))
+(local journal_folder (.. sys.git-path :NOTES/Journal))
 
 [{1 :vhyrro/luarocks.nvim
   :config true
@@ -40,15 +35,11 @@
                     :external.conceal-wrap {}
                     :core.ui.calendar {}
                     :core.journal {:config {: journal_folder}}
-                    :core.dirman {:config {:workspaces {: blog
-                                                        : fennel
+                    :core.dirman {:config {:workspaces {: fennel
                                                         : oblivion
-                                                        : personal
                                                         : programming
-                                                        : obl-ref
-                                                        : wood
                                                         : academics
-                                                        : config}
+                                                        : work}
                                               :index "main.norg"}}
                     :core.syntax {}
                     :core.integrations.treesitter {}
