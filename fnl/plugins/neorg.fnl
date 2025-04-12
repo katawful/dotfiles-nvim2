@@ -1,6 +1,7 @@
 (local sys (require :globals.init))
 
 (local leader :<leader>n)
+(local work (.. sys.git-path :/NOTES/Work))
 (local fennel (.. sys.git-path :/NOTES/Fennel))
 (local oblivion (.. sys.git-path :/NOTES/Oblivion))
 (local programming (.. sys.git-path :/NOTES/Programming))
