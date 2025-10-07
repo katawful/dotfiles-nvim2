@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/heirline.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/heirline.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local icons = autoload("globals.icons")
@@ -93,17 +93,17 @@ local function line(_plugin, _opts)
   raw.relnum = {condition = _11_, provider = _12_, on_click = {callback = _14_, name = "heirline_statuscolumn_number_callback"}, hl = _15_}
   local function _16_(_241)
     do
-      local tbl_21_auto = {}
-      local i_22_auto = 0
+      local tbl_21_ = {}
+      local i_22_ = 0
       for _, mark in ipairs(vim.fn.getmarklist(vim.fn.bufname())) do
-        local val_23_auto = {name = string.sub(mark.mark, 2, 2), buf = mark.pos[1], lnum = mark.pos[2], col = mark.pos[3]}
-        if (nil ~= val_23_auto) then
-          i_22_auto = (i_22_auto + 1)
-          tbl_21_auto[i_22_auto] = val_23_auto
+        local val_23_ = {name = string.sub(mark.mark, 2, 2), buf = mark.pos[1], lnum = mark.pos[2], col = mark.pos[3]}
+        if (nil ~= val_23_) then
+          i_22_ = (i_22_ + 1)
+          tbl_21_[i_22_] = val_23_
         else
         end
       end
-      _241.marks = tbl_21_auto
+      _241.marks = tbl_21_
     end
     return nil
   end

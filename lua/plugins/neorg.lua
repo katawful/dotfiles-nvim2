@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/neorg.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/neorg.fnl
 local sys = require("globals.init")
 local leader = "<leader>n"
 local fennel = (sys["git-path"] .. "/NOTES/Fennel")

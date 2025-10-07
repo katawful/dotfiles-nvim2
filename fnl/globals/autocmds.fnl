@@ -6,7 +6,7 @@
 (let [highlight (auto.group.define :highlight-on-yank true)]
   (auto.group.fill highlight
                    (auto.cmd.create :TextYankPost "*"
-                                    #((. (require :vim.highlight) :on_yank))
+                                    #((. (require :vim.hl) :on_yank))
                                     "Highlight yank region")))
 
 (comment "Make terminal defaults better")

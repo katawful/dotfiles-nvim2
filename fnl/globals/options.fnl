@@ -17,6 +17,8 @@
 
 (option.set clipboard :unnamedplus :append)
 
+(option.set background :light)
+
 (comment "Folding")
 (option.set {foldenable false
              foldmethod :syntax

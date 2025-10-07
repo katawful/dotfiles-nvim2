@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/fzf-lua.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/fzf-lua.fnl
 local fzf_leader = "<leader>f"
 local fzf
 local function _1_()

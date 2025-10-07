@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/cmp.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/cmp.fnl
 local function _1_()
   local cmp = require("cmp")
   local luasnip = require("luasnip")

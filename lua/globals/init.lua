@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/globals/init.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/globals/init.fnl
 require("globals.options")
 require("globals.maps")
 require("globals.autocmds")

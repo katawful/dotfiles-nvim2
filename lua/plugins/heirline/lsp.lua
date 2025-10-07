@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/heirline/lsp.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/heirline/lsp.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local icons = autoload("globals.icons")
@@ -17,22 +17,22 @@ M["get-name"] = function(_3fbuffer, _3fclient_number)
 end
 M["get-namespace"] = function(lsp_name)
   _G.assert((nil ~= lsp_name), "Missing argument lsp-name on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:31")
-  local tbl_21_auto = {}
-  local i_22_auto = 0
+  local tbl_21_ = {}
+  local i_22_ = 0
   for name, id in pairs(vim.api.nvim_get_namespaces()) do
-    local val_23_auto
+    local val_23_
     if string.match(name, (lsp_name .. ".%d/diagnostic/signs")) then
-      val_23_auto = id
+      val_23_ = id
     else
-      val_23_auto = nil
+      val_23_ = nil
     end
-    if (nil ~= val_23_auto) then
-      i_22_auto = (i_22_auto + 1)
-      tbl_21_auto[i_22_auto] = val_23_auto
+    if (nil ~= val_23_) then
+      i_22_ = (i_22_ + 1)
+      tbl_21_[i_22_] = val_23_
     else
     end
   end
-  return tbl_21_auto
+  return tbl_21_
 end
 M["get-sign"] = function(lsp_name, lnum)
   _G.assert((nil ~= lnum), "Missing argument lnum on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:39")

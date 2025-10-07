@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/heirline/vi-mode.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/heirline/vi-mode.fnl
 local icons = require("globals.icons")
 local config = require("plugins.heirline.config")
 local conditions = require("heirline.conditions")

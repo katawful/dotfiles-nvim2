@@ -261,7 +261,7 @@
                    :val [{:type :padding :val 5}
                          theme.info
                          theme.empty-line
-                         theme.logo
+                         ; theme.logo
                          theme.fortune-message
                          theme.empty-line]})
 

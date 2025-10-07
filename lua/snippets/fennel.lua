@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/snippets/fennel.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/snippets/fennel.fnl
 local str = require("nfnl.string")
 local function variable_naming(args)
   local mod_name

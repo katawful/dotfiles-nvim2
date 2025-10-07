@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/comment.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/comment.fnl
 local _1_
 do
   local result_9_auto = vim.fn.has("nvim-0.10.0")

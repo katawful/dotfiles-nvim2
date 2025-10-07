@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/globals/maps.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/globals/maps.fnl
 --[[ "Set the leader values" ]]
 do
   vim.g["maplocalleader"] = ","

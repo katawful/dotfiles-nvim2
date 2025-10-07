@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/heirline/config.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/heirline/config.fnl
 local icons = require("globals.icons")
 local M = {}
 M["gen-colors"] = function()

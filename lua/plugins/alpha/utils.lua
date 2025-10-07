@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/alpha/utils.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/alpha/utils.fnl
 local icons = require("globals.icons")
 local devicons = require("nvim-web-devicons")
 local plenary_path = require("plenary.path")
@@ -91,9 +91,9 @@ local function button(keymap, val, rhs, rhs_opts, _3fopts)
   local keymap_trimmed = keymap:gsub("%s", ""):gsub(leader, "<leader>")
   local opts
   do
-    local tbl_16_auto = {}
+    local tbl_16_ = {}
     for k, v in pairs(M["button-opts"]) do
-      local k_17_auto, v_18_auto = nil, nil
+      local k_17_, v_18_ = nil, nil
       local _14_
       do
         local t_13_ = _3fopts
@@ -104,7 +104,7 @@ local function button(keymap, val, rhs, rhs_opts, _3fopts)
         _14_ = t_13_
       end
       if not _14_ then
-        k_17_auto, v_18_auto = k, v
+        k_17_, v_18_ = k, v
       else
         local function _17_()
           local t_16_ = _3fopts
@@ -114,14 +114,14 @@ local function button(keymap, val, rhs, rhs_opts, _3fopts)
           end
           return t_16_
         end
-        k_17_auto, v_18_auto = k, _17_()
+        k_17_, v_18_ = k, _17_()
       end
-      if ((k_17_auto ~= nil) and (v_18_auto ~= nil)) then
-        tbl_16_auto[k_17_auto] = v_18_auto
+      if ((k_17_ ~= nil) and (v_18_ ~= nil)) then
+        tbl_16_[k_17_] = v_18_
       else
       end
     end
-    opts = tbl_16_auto
+    opts = tbl_16_
   end
   opts.shortcut = keymap
   local _22_
@@ -221,9 +221,9 @@ M.mru = function(dir, start, _3famount, _3fopts)
   _G.assert((nil ~= dir), "Missing argument dir on /home/kat/.config/nvim/fnl/plugins/alpha/utils.fnl:160")
   local opts
   if _3fopts then
-    local tbl_16_auto = {}
+    local tbl_16_ = {}
     for k, v in pairs(M["mru-opts"]) do
-      local k_17_auto, v_18_auto = nil, nil
+      local k_17_, v_18_ = nil, nil
       local _33_
       do
         local t_32_ = _3fopts
@@ -234,7 +234,7 @@ M.mru = function(dir, start, _3famount, _3fopts)
         _33_ = t_32_
       end
       if not _33_ then
-        k_17_auto, v_18_auto = k, v
+        k_17_, v_18_ = k, v
       else
         local function _36_()
           local t_35_ = _3fopts
@@ -244,14 +244,14 @@ M.mru = function(dir, start, _3famount, _3fopts)
           end
           return t_35_
         end
-        k_17_auto, v_18_auto = k, _36_()
+        k_17_, v_18_ = k, _36_()
       end
-      if ((k_17_auto ~= nil) and (v_18_auto ~= nil)) then
-        tbl_16_auto[k_17_auto] = v_18_auto
+      if ((k_17_ ~= nil) and (v_18_ ~= nil)) then
+        tbl_16_[k_17_] = v_18_
       else
       end
     end
-    opts = tbl_16_auto
+    opts = tbl_16_
   else
     opts = M["mru-opts"]
   end
@@ -341,9 +341,9 @@ M["show-commits"] = function(start, _3famount, _3fopts)
   _G.assert((nil ~= start), "Missing argument start on /home/kat/.config/nvim/fnl/plugins/alpha/utils.fnl:205")
   local opts
   if _3fopts then
-    local tbl_16_auto = {}
+    local tbl_16_ = {}
     for k, v in pairs(M["commit-opts"]) do
-      local k_17_auto, v_18_auto = nil, nil
+      local k_17_, v_18_ = nil, nil
       local _58_
       do
         local t_57_ = _3fopts
@@ -354,16 +354,16 @@ M["show-commits"] = function(start, _3famount, _3fopts)
         _58_ = t_57_
       end
       if not _58_ then
-        k_17_auto, v_18_auto = k, v
+        k_17_, v_18_ = k, v
       else
-        k_17_auto, v_18_auto = k, _3fopts[k]
+        k_17_, v_18_ = k, _3fopts[k]
       end
-      if ((k_17_auto ~= nil) and (v_18_auto ~= nil)) then
-        tbl_16_auto[k_17_auto] = v_18_auto
+      if ((k_17_ ~= nil) and (v_18_ ~= nil)) then
+        tbl_16_[k_17_] = v_18_
       else
       end
     end
-    opts = tbl_16_auto
+    opts = tbl_16_
   else
     opts = M["commit-opts"]
   end

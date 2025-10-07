@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/luasnip.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/luasnip.fnl
 local template = {sources = {ultisnips = {"./vim-snippets/UltiSnips", (vim.fn.stdpath("config") .. "/UltiSnips")}, snipmate = {"vim-snippets/snippets"}}, output = {vscode_luasnip = {(vim.fn.stdpath("config") .. "/luasnip_snippets")}}}
 local function _1_()
   return require("snippet_converter").setup({templates = {template}})

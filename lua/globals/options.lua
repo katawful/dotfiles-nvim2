@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/globals/options.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/globals/options.fnl
 --[[ "Top Level" ]]
 do
   vim.opt["virtualedit"] = "block"
@@ -16,6 +16,7 @@ do
   vim.opt["cmdheight"] = 2
 end
 vim.opt_global.clipboard:append("unnamedplus")
+vim.opt_global["background"] = "light"
 --[[ "Folding" ]]
 do
   vim.opt["foldmethod"] = "syntax"

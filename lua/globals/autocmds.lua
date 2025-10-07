@@ -1,9 +1,9 @@
--- [nfnl] Compiled from fnl/globals/autocmds.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/globals/autocmds.fnl
 --[[ "Highlight yank region upon yank" ]]
 do
   local highlight = vim.api.nvim_create_augroup("highlight-on-yank", {clear = true})
   local function _1_()
-    return require("vim.highlight").on_yank()
+    return require("vim.hl").on_yank()
   end
   vim.api.nvim_create_autocmd("TextYankPost", {callback = _1_, desc = "Highlight yank region", group = highlight, pattern = "*"})
 end

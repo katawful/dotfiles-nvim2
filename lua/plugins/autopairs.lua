@@ -1,2 +1,2 @@
--- [nfnl] Compiled from fnl/plugins/autopairs.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/autopairs.fnl
 return {"windwp/nvim-autopairs", dependencies = {"windwp/nvim-ts-autotag", config = true}, config = true, opts = {disable_filetype = {"lisp", "fennel", "clojure", "query", "scheme"}}}

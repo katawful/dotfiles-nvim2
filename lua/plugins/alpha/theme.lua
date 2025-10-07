@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/alpha/theme.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/alpha/theme.fnl
 local utils = require("plugins.alpha.utils")
 local fortune = require("alpha.fortune")
 local icons = require("globals.icons")
@@ -126,7 +126,7 @@ end
 theme.logo = {type = "text", val = strings.bee.val, opts = {position = M.opts.position, hl = "Constant"}}
 theme.info = {type = "text", val = P["info-string"](), opts = {position = M.opts.position, hl = "Repeat"}}
 theme["fortune-message"] = {type = "text", val = P["fortune-generate"](strings.catsleep.val), opts = {position = M.opts.position, hl = "String"}}
-theme.header = {type = "group", val = {{type = "padding", val = 5}, theme.info, theme["empty-line"], theme.logo, theme["fortune-message"], theme["empty-line"]}}
+theme.header = {type = "group", val = {{type = "padding", val = 5}, theme.info, theme["empty-line"], theme["fortune-message"], theme["empty-line"]}}
 local current_list = 0
 P["update-list-number"] = function(amount)
   current_list = (current_list + amount)

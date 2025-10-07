@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/nvim-treesiter.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/nvim-treesiter.fnl
 local ensure_installed = {"c", "markdown", "markdown_inline", "bash", "lua", "vim", "vimdoc", "query", "cpp", "javascript", "json", "fennel"}
 local function disable_treesitter(lang, buf)
   local max_filesize = (100 * 4096)

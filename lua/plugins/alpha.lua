@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/alpha.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/alpha.fnl
 local leader = "<leader>a"
 local function _1_()
   require("alpha").setup(require("plugins.alpha.theme").config())

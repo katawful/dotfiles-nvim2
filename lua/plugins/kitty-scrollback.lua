@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/kitty-scrollback.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/kitty-scrollback.fnl
 local function _1_()
   return require("kitty-scrollback").setup()
 end
