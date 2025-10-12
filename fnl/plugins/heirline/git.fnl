@@ -8,12 +8,6 @@
 (local utils (autoload :plugins.heirline.utils))
 (local config (autoload :plugins.heirline.config))
 
-;;; Macros
-(import-macros lazy :nvim-anisole.macros.lazy)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
-
 ;;; Components
 (local git (autoload :plugins.heirline.git))
 (local vi-mode (autoload :plugins.heirline.vi-mode))

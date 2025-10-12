@@ -32,22 +32,22 @@ P["alpha-autocmd"] = function()
   local old_titlestring = vim.opt.titlestring:get()
   local old_fillchars = vim.opt.fillchars:get()
   local function _5_()
-    vim.opt["titlestring"] = old_titlestring
-    vim.opt["tabline"] = old_tabline
-    vim.opt["showtabline"] = old_showtabline
-    vim.opt["laststatus"] = old_statusbar
-    vim.opt["fillchars"] = old_fillchars
-    vim.opt["cmdheight"] = old_cmdheight
+    vim.opt_global["titlestring"] = old_titlestring
+    vim.opt_global["tabline"] = old_tabline
+    vim.opt_global["showtabline"] = old_showtabline
+    vim.opt_global["laststatus"] = old_statusbar
+    vim.opt_local["fillchars"] = old_fillchars
+    vim.opt_global["cmdheight"] = old_cmdheight
     return nil
   end
   vim.api.nvim_create_autocmd("User", {callback = _5_, desc = "Disable visual options on Alpha open", group = alpha_aug, pattern = "AlphaClosed"})
   local function _6_()
-    vim.opt["titlestring"] = "Anisole"
-    vim.opt["tabline"] = ""
-    vim.opt["showtabline"] = 0
-    vim.opt["laststatus"] = 0
-    vim.opt["fillchars"] = {eob = " "}
-    vim.opt["cmdheight"] = 0
+    vim.opt_global["titlestring"] = "Anisole"
+    vim.opt_global["tabline"] = ""
+    vim.opt_global["showtabline"] = 0
+    vim.opt_global["laststatus"] = 0
+    vim.opt_local["fillchars"] = {eob = " "}
+    vim.opt_global["cmdheight"] = 0
     return nil
   end
   return vim.api.nvim_create_autocmd("User", {callback = _6_, desc = "Disable visual options on Alpha open", group = alpha_aug, pattern = "AlphaReady"})

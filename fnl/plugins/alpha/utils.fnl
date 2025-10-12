@@ -1,4 +1,4 @@
-(import-macros cmd :nvim-anisole.macros.commands)
+(import-macros m :init-macros)
 (local icons (require :globals.icons))
 (local devicons (require :nvim-web-devicons))
 (local plenary-path (require :plenary.path))
@@ -31,7 +31,7 @@
     (os.date (.. (M.surround icons.ui.calendar) "%m/%d/%Y")))
 
 (fn M.get-cwd [] "FN -- Get current directory"
-    (cmd.run.fn :getcwd))
+    (m.command.run.fn :getcwd))
 
 (fn M.repo? [dir] "FN -- Is dir a git repo?"
     (let [path (.. (vim.loop.cwd) :/.git)
@@ -47,7 +47,7 @@
          out))
 
 (fn get-extension [file] "FN -- Get the file extension"
-   (cmd.run.fn fnamemodify file ":e"))
+   (m.command.run.fn fnamemodify file ":e"))
 
 (fn get-filetype-color [ext]
     "FN -- From nvim-web-devicons but simplified
@@ -115,7 +115,7 @@ This function simply gets an icon, of the right color, using a file extension"
            cd-cmd (or (and autocd " | cd %:p:h") "")
            button-element (button keymap
                                     (.. icon-text short-file)
-                                    (.. "<cmd>e " (cmd.run.fn fnameescape file)
+                                    (.. "<cmd>e " (m.command.run.fn fnameescape file)
                                         cd-cmd
                                         " <CR>"))
 
@@ -178,7 +178,7 @@ This function simply gets an icon, of the right color, using a file extension"
                                     (opts.ignore v (get-extension v)))
                                false)]
 
-                (when (and (and (cmd.run.fn filereadable v)
+                (when (and (and (m.command.run.fn filereadable v)
                                 dir-cond)
                            (not ignore))
                       (table.insert oldfiles v))))
@@ -187,8 +187,8 @@ This function simply gets an icon, of the right color, using a file extension"
           (for [i 1 amount &until (not (?. oldfiles i))]
             (let [keymap (tostring (+ start (- i 1)))
                   file-path (if dir
-                                (cmd.run.fn fnamemodify (. oldfiles i) ":.")
-                                (cmd.run.fn fnamemodify (. oldfiles i) ":~"))
+                                (m.command.run.fn fnamemodify (. oldfiles i) ":.")
+                                (m.command.run.fn fnamemodify (. oldfiles i) ":~"))
                   short-file-path (do (var target file-path)
                                       (when (> (length target) width)
                                             (set target (: (plenary-path.new target)

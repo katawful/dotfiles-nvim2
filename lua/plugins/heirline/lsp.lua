@@ -16,7 +16,7 @@ M["get-name"] = function(_3fbuffer, _3fclient_number)
   return client.config.name
 end
 M["get-namespace"] = function(lsp_name)
-  _G.assert((nil ~= lsp_name), "Missing argument lsp-name on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:31")
+  _G.assert((nil ~= lsp_name), "Missing argument lsp-name on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:25")
   local tbl_21_ = {}
   local i_22_ = 0
   for name, id in pairs(vim.api.nvim_get_namespaces()) do
@@ -35,8 +35,8 @@ M["get-namespace"] = function(lsp_name)
   return tbl_21_
 end
 M["get-sign"] = function(lsp_name, lnum)
-  _G.assert((nil ~= lnum), "Missing argument lnum on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:39")
-  _G.assert((nil ~= lsp_name), "Missing argument lsp-name on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:39")
+  _G.assert((nil ~= lnum), "Missing argument lnum on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:33")
+  _G.assert((nil ~= lsp_name), "Missing argument lsp-name on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:33")
   local id = M["get-namespace"](lsp_name, lnum)
   local lnum0 = (lnum + -1)
   if not n["empty?"](id) then
@@ -46,8 +46,8 @@ M["get-sign"] = function(lsp_name, lnum)
   end
 end
 P["get-sign-detail"] = function(sign, detail)
-  _G.assert((nil ~= detail), "Missing argument detail on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:58")
-  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:58")
+  _G.assert((nil ~= detail), "Missing argument detail on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:52")
+  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:52")
   local priority = 0
   --[[ "heirline will break if it is passed an invalid hl-group" ]]
   local output = "MsgSeparator"
@@ -62,11 +62,11 @@ P["get-sign-detail"] = function(sign, detail)
   return output
 end
 M["get-sign-type"] = function(sign)
-  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:76")
+  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:70")
   return P["get-sign-detail"](sign, "sign_hl_group")
 end
 M["get-sign-icon"] = function(sign)
-  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:81")
+  _G.assert((nil ~= sign), "Missing argument sign on /home/kat/.config/nvim/fnl/plugins/heirline/lsp.fnl:75")
   return string.sub(P["get-sign-detail"](sign, "sign_text"), 0, 1)
 end
 return M

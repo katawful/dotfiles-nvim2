@@ -1,3 +1,3 @@
-(import-macros option :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
-(option.set conceallevel 0)
+(m.options.set {conceallevel 0})

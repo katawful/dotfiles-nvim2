@@ -1,5 +1,3 @@
-(import-macros lazy :nvim-anisole/macros/lazy)
-
 (local ensure_installed [
                          :c
                          :markdown

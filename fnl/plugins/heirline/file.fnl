@@ -9,10 +9,7 @@
 (local config (autoload :plugins.heirline.config))
 
 ;;; Macros
-(import-macros lazy :nvim-anisole.macros.lazy)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
 ;;; Components
 (local git (autoload :plugins.heirline.git))
@@ -26,8 +23,8 @@
 ;; - Modified status
 (set M.block {:init #(set $1.filename (vim.api.nvim_buf_get_name 0))})
 
-(set M.icon {:init #(let [filename (cmd.run.fn :expand "%:p")
-                          extension (cmd.run.fn :fnamemodify
+(set M.icon {:init #(let [filename (m.cmd.run.fn :expand "%:p")
+                          extension (m.cmd.run.fn :fnamemodify
                                                 filename
                                                 ":e")]
                       (set ($1.icon $1.icon_color)
@@ -40,7 +37,7 @@
 (set M.full-name {:init #(set $1.filename (vim.api.nvim_buf_get_name 0))
                   :condition #(or (not= vim.bo.filetype :help)
                                   (not= vim.bo.filetype ""))
-                  :provider #(let [filename (cmd.run.fn :fnamemodify
+                  :provider #(let [filename (m.cmd.run.fn :fnamemodify
                                                         $1.filename
                                                         ":.")]
                                (if (= filename "")
@@ -48,7 +45,7 @@
                                    (not (conditions.width_percent_below
                                           (length filename)
                                           0.35))
-                                   (cmd.run.fn :pathshorten filename)
+                                   (m.cmd.run.fn :pathshorten filename)
                                    filename))
                   :hl {:fg :normal_fg}})
 
@@ -57,7 +54,7 @@
 
 (set M.short-name {:provider #(if (= $1.filename "")
                                   icons.ui.file
-                                  (cmd.run.fn fnamemodify $1.filename ":t"))
+                                  (m.cmd.run.fn fnamemodify $1.filename ":t"))
                    :hl #{:bold (or $1.is_active $1.is_visible) :italic true}})
 
 (set M.flags [{:condition #vim.bo.modified
@@ -97,7 +94,7 @@
                :hl {:fg :normal_fg}})
 
 (set M.size {:provider #(let [suffix [:b :k :M :G :T :P :E]
-                              fsize (cmd.run.fn :getfsize
+                              fsize (m.cmd.run.fn :getfsize
                                                 (vim.api.nvim_buf_get_name 0))
                               fsize (if (> 0 fsize) 0 fsize)]
                           (if (> 1024 fsize)
@@ -118,7 +115,7 @@
 (set M.help {:provider #(string.format
                           "%s %s"
                           icons.ui.question
-                          (cmd.run.fn :fnamemodify
+                          (m.cmd.run.fn :fnamemodify
                                       (vim.api.nvim_buf_get_name 0)
                                       ":t"))
              :hl {:fg :normal_fg

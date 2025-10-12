@@ -1,6 +1,4 @@
-(import-macros option :nvim-anisole.macros.options)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
+(import-macros m :init-macros)
 (local utils (require :plugins.alpha.utils))
 (local fortune (require :alpha.fortune))
 (local icons (require :globals.icons))
@@ -88,29 +86,29 @@
                                  "                         '---''(_/--'  `-'\\_)     "]}})
 
 (fn P.alpha-autocmd []
-    (let [alpha-aug (auto.group.define "UserAlphaNvim")
-          old-cmdheight (option.get cmdheight)
-          old-tabline (option.get tabline)
-          old-showtabline (option.get showtabline)
-          old-statusbar (option.get laststatus)
-          old-titlestring (option.get titlestring)
-          old-fillchars (option.get fillchars)]
-         (auto.group.fill alpha-aug
-                          (auto.cmd.create :User :AlphaReady
-                                           #(do (option.set {cmdheight 0
-                                                             tabline ""
-                                                             titlestring "Anisole"
-                                                             showtabline 0
-                                                             laststatus 0
-                                                             fillchars {:eob " "}}))
+    (let [alpha-aug (m.auto.group.define "UserAlphaNvim")
+          old-cmdheight (m.options.get cmdheight)
+          old-tabline (m.options.get tabline)
+          old-showtabline (m.options.get showtabline)
+          old-statusbar (m.options.get laststatus)
+          old-titlestring (m.options.get titlestring)
+          old-fillchars (m.options.get fillchars)]
+         (m.auto.group.fill alpha-aug
+                          (m.auto.cmd.create :User :AlphaReady
+                                           #(do (m.options.set {cmdheight 0
+                                                                tabline ""
+                                                                titlestring "Anisole"
+                                                                showtabline 0
+                                                                laststatus 0
+                                                                fillchars {:eob " "}}))
                                            "Disable visual options on Alpha open")
-                          (auto.cmd.create :User :AlphaClosed
-                                           #(do (option.set {cmdheight old-cmdheight
-                                                             tabline old-tabline
-                                                             titlestring old-titlestring
-                                                             showtabline old-showtabline
-                                                             laststatus old-statusbar
-                                                             fillchars old-fillchars}))
+                          (m.auto.cmd.create :User :AlphaClosed
+                                           #(do (m.options.set {cmdheight old-cmdheight
+                                                                tabline old-tabline
+                                                                titlestring old-titlestring
+                                                                showtabline old-showtabline
+                                                                laststatus old-statusbar
+                                                                fillchars old-fillchars}))
                                            "Disable visual options on Alpha open"))))
 
 
@@ -180,8 +178,8 @@
         theme.no-line))
 
 (fn P.open-bookmark [path dir]
-    (cmd.run.fn :chdir dir)
-    (cmd.run.cmd :edit! path))
+    (m.command.run.fn :chdir dir)
+    (m.command.run.cmd :edit! path))
 
 (fn P.create-bookmark [bookmark keymap]
     (let [text (. (. strings.bookmarks.config bookmark) :text)
@@ -279,10 +277,10 @@
             theme.empty-line
             {:type :button
              :val strings.edit.text
-             :on_press (fn [] (cmd.run.cmd :enew))
+             :on_press (fn [] (m.command.run.cmd :enew))
              :opts {:keymap [:n :e "" {:noremap true
                                        :nowait true
-                                       :callback #(cmd.run.cmd :enew)
+                                       :callback #(m.command.run.cmd :enew)
                                        :silent true}]
                     :shortcut :e
                     :align_shortcut :left
@@ -310,10 +308,10 @@
             theme.empty-line
             {:type :button
              :val strings.quit.text
-             :on_press #(cmd.run.cmd :quit)
+             :on_press #(m.command.run.cmd :quit)
              :opts {:keymap [:n :q "" {:noremap true
                                        :nowait true
-                                       :callback #(cmd.run.cmd :quit)
+                                       :callback #(m.command.run.cmd :quit)
                                        :silent true}]
                     :shortcut :q
                     :align_shortcut :left

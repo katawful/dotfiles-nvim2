@@ -20,7 +20,9 @@ local function line(_plugin, _opts)
   config.colors = config["gen-colors"]()
   local colors = config.colors
   require("heirline").load_colors(config.colors)
-  vim.opt_global["showtabline"] = 2
+  do
+    vim.opt_global["showtabline"] = 2
+  end
   do
     local heir = vim.api.nvim_create_augroup("UserHeirline", {clear = true})
     local function _2_()

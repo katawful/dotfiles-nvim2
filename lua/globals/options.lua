@@ -15,8 +15,7 @@ do
   vim.opt["hidden"] = false
   vim.opt["cmdheight"] = 2
 end
-vim.opt_global.clipboard:append("unnamedplus")
-vim.opt_global["background"] = "light"
+vim.opt.clipboard:append("unnamedplus")
 --[[ "Folding" ]]
 do
   vim.opt["foldmethod"] = "syntax"
@@ -46,8 +45,11 @@ do
   vim.opt["breakindent"] = true
 end
 --[[ "Extra" ]]
-vim.opt_global["inccommand"] = "nosplit"
-vim.opt_local.nrformats:remove("octal")
+do
+  vim.opt["inccommand"] = "nosplit"
+  vim.opt["background"] = "light"
+end
+vim.opt.nrformats:remove("octal")
 vim.diagnostic.config({virtual_text = false})
 vim.lsp.inlay_hint.enable()
 --[[ "GUI" ]]

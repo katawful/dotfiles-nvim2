@@ -10,10 +10,10 @@ end
 --[[ "Make terminal defaults better" ]]
 local terminal = vim.api.nvim_create_augroup("terminal-settings", {clear = true})
 local function _2_()
-  vim.opt["spell"] = false
-  vim.opt["relativenumber"] = false
-  vim.opt["number"] = false
-  vim.opt["bufhidden"] = "hide"
+  vim.opt_local["spell"] = false
+  vim.opt_local["relativenumber"] = false
+  vim.opt_local["number"] = false
+  vim.opt_local["bufhidden"] = "hide"
   return nil
 end
 return vim.api.nvim_create_autocmd("TermOpen", {callback = _2_, desc = "No number, relativenumber, and no spell. Bufhidden", group = terminal, pattern = "*"})

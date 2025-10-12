@@ -10,10 +10,7 @@
 (local n (autoload :nfnl.core))
 
 ;;; Macros
-(import-macros lazy :nvim-anisole.macros.lazy)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
 ;;; Components
 (local git (autoload :plugins.heirline.git))
@@ -35,10 +32,10 @@
   (local colors config.colors)
 
   ((. (require :heirline) :load_colors) config.colors)
-  (options.set showtabline 2)
-  (let [heir (auto.group.define "UserHeirline" true)]
-    (auto.group.fill heir
-      (auto.cmd.create "ColorScheme"
+  (m.options.set {showtabline 2})
+  (let [heir (m.auto.group.define "UserHeirline" true)]
+    (m.auto.group.fill heir
+      (m.auto.cmd.create "ColorScheme"
                        nil
                        #(do
                           ;(set config.colors (config.gen-colors))
@@ -74,7 +71,7 @@
   (set components.filedetails file.filedetails)
 
   (set raw.fold fold.component)
-  (set raw.lnum {:condition #(options.get number)
+  (set raw.lnum {:condition #(m.options.get number)
                  :provider #(let [lnum (tostring vim.v.lnum)
                                   lnum-length (length lnum)
                                   lnum-size (utils.size-of-lnum)
@@ -91,7 +88,7 @@
                                              {:default {:bold false}
                                               :new {:bold true}})})
 
-  (set raw.relnum {:condition #(options.get relativenumber)
+  (set raw.relnum {:condition #(m.options.get relativenumber)
                    :provider #(let [relnum (tostring vim.v.relnum)
                                     relnum (if (> (length relnum) 1)
                                                relnum
@@ -123,10 +120,10 @@
                                                                                (- mark.col 1)])
                                                (vim.api.nvim_win_set_cursor 0 [mouse-lnum 0]))))
                              :name "heirline_statuscolumn_marks_callback"}
-                  :condition #(or (or (options.get number)
-                                      (options.get relativenumber))
-                                  (and (options.get number)
-                                       (options.get relativenumber)))
+                  :condition #(or (or (m.options.get number)
+                                      (m.options.get relativenumber))
+                                  (and (m.options.get number)
+                                       (m.options.get relativenumber)))
                   :hl #(utils.hl-current-line {:default config.colors.blue
                                                :new config.colors.dark_blue}
                                               nil
@@ -159,7 +156,7 @@
 
   (set components.statuscolumn {1 raw.fold
                                 2 {:provider " "
-                                   :condition #(options.get foldenable)}
+                                   :condition #(m.options.get foldenable)}
                                 3 components.numbers
                                 4 raw.gitsigns
                                 5 raw.lsp-signs

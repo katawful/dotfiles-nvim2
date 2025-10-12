@@ -1,5 +1,5 @@
 -- [nfnl] after/ftplugin/norg.fnl
-vim.opt["wrap"] = false
-vim.opt["textwidth"] = 100
-vim.opt["spell"] = true
+vim.opt_local["wrap"] = false
+vim.opt_local["textwidth"] = 100
+vim.opt_local["spell"] = true
 return nil

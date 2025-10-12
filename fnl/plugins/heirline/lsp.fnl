@@ -9,12 +9,6 @@
 (local config (autoload :plugins.heirline.config))
 (local n (autoload :nfnl.core))
 
-;;; Macros
-(import-macros lazy :nvim-anisole.macros.lazy)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
-
 ;;; Components
 (local M {})
 (local P {})

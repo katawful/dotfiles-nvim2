@@ -1,5 +1,5 @@
-(import-macros options :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
-(options.set {textwidth 100
-              wrap false
-              spell true})
+(m.options.set {textwidth 100
+                wrap false
+                spell true})

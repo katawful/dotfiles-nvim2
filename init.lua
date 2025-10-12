@@ -1,4 +1,3 @@
--- [nfnl] init.fnl
 local M = {path = {}}
 --[[ "Create necessary paths" ]]
 M.path.lazy = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")

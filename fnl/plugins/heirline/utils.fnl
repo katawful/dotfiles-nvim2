@@ -1,9 +1,6 @@
 (local {: autoload} (require :nfnl.module))
 (local icons (autoload :globals.icons))
 (local heir-utils (autoload :heirline.utils))
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
 
 ;;; Module: plugins.heirline.utils
 ;; Various utilities for heirline

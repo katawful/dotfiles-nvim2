@@ -1,6 +1,6 @@
-(import-macros option :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
-(option.set {spell true
-             textwidth 80
-             colorcolumn "80"
-             conceallevel 0})
+(m.options.set {spell true
+                textwidth 80
+                colorcolumn "80"
+                conceallevel 0})

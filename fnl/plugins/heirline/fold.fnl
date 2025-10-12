@@ -9,10 +9,7 @@
 (local config (autoload :plugins.heirline.config))
 
 ;;; Macros
-(import-macros lazy :nvim-anisole.macros.lazy)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
 ;;; Components
 (local git (autoload :plugins.heirline.git))
@@ -22,9 +19,9 @@
 
 (local colors config.colors)
 
-(set M.component {:condition #(options.get foldenable)
+(set M.component {:condition #(m.options.get foldenable)
                   :provider #(let [lnum (tostring vim.v.lnum)
-                                   fillchars (options.get fillchars)
+                                   fillchars (m.options.get fillchars)
                                    foldchars {:open (or (?. fillchars.foldopen)
                                                         icons.ui.arrow-down)
                                               :closed (or (?. fillchars.foldclosed)

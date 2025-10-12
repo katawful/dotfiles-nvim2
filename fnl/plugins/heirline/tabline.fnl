@@ -9,10 +9,7 @@
 (local config (autoload :plugins.heirline.config))
 
 ;;; Macros
-(import-macros lazy :nvim-anisole.macros.lazy)
-(import-macros auto :nvim-anisole.macros.autocmds)
-(import-macros cmd :nvim-anisole.macros.commands)
-(import-macros options :nvim-anisole.macros.options)
+(import-macros m :init-macros)
 
 ;;; Components
 (local git (autoload :plugins.heirline.git))
@@ -45,7 +42,7 @@
                               (vim.schedule
                                 #(do (vim.api.nvim_buf_delete minwid
                                                               {:force false})
-                                   (cmd.run.cmd :redrawtabline))))
+                                   (m.cmd.run.cmd :redrawtabline))))
                   :minwid #$1.bufnr
                   :name "heirline_tabline_close_buffer_callback"}}})
 

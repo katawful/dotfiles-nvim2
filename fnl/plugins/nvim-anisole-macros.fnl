@@ -4,6 +4,6 @@
 
 (var M {})
 
-(set M {1 :katawful/nvim-anisole-macros})
+; (set M {1 :katawful/nvim-anisole-macros})
 
 M
