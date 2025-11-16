@@ -7,11 +7,9 @@
 (if (= sys.home :Kat-Arch)
     (set M {:enabled true
             :priority 1000
-            :dir "~/Repos/NEOVIM/katdotnvim/"
-            :config #(vim.cmd.colorscheme :kat.nvim)})
+            :dir "~/Repos/NEOVIM/katdotnvim/"})
     (set M {1 :katawful/kat.nvim
             :enabled true
-            :priority 1000
-            :config #(vim.cmd.colorscheme :kat.nvim)}))
+            :priority 1000}))
 
 M

@@ -4,7 +4,7 @@
 ;;; Module: Configuration for heirline
 (local M {})
 
-(fn M.gen-colors []
+(fn M.gen-colors-KAT []
   (let [kat (. (require :katdotnvim.color) :kat)]
     {:bright_bg kat.bg.umbra.color
      :bright_fg kat.fg.umbra.color
@@ -40,6 +40,43 @@
      :git_del kat.red.darken.color
      :git_add kat.green.auto.color
      :git_change kat.purple.base.color}))
+
+(fn M.gen-colors-LATTE []
+  (let [latte ((. (require :catppuccin.palettes) :get_palette) :latte)]
+    {:bright_bg latte.crust
+     :bright_fg latte.text
+     :normal_bg latte.base
+     :normal_fg latte.text
+     :brighter_bg latte.mantle
+     :brighter_fg latte.text
+     :light_red latte.peach
+     :red latte.red
+     :dark_red latte.maroon
+     :cyan latte.sky
+     :blue latte.blue
+     :dark_blue latte.sapphire
+     :light_green latte.teal
+     :green latte.green
+     :dark_green latte.green
+     :light_orange latte.yellow
+     :orange latte.maroon
+     :dark_orange latte.mauve
+     :light_purple latte.mauve
+     :purple latte.mauve
+     :dark_purple latte.mauve
+     :light_pink latte.rosewater
+     :pink latte.pink
+     :dark_pink latte.flamingo
+     :light_gray latte.subtext1
+     :gray latte.subtext0
+     :dark_gray latte.subtext2
+     :diag_warn latte.yellow
+     :diag_error latte.red
+     :diag_hint latte.teal
+     :diag_info latte.sky
+     :git_del latte.red
+     :git_add latte.green
+     :git_change latte.yellow}))
 
 (local delimiters icons.powerline-half-circle-thick)
 (set M.providers {:delimiter {:left [delimiters.left nil]

@@ -28,7 +28,7 @@
   (local raw {})
 
   ;; Setup colors
-  (set config.colors (config.gen-colors))
+  (set config.colors (config.gen-colors-LATTE))
   (local colors config.colors)
 
   ((. (require :heirline) :load_colors) config.colors)

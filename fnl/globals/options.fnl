@@ -12,7 +12,7 @@
                 virtualedit "block"
                 hidden false
                 updatetime 100
-                cmdheight 2
+                cmdheight 1
                 title true}
                nil true)
 

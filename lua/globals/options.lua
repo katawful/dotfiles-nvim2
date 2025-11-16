@@ -13,7 +13,7 @@ do
   vim.opt["mouse"] = "nvi"
   vim.opt["modeline"] = true
   vim.opt["hidden"] = false
-  vim.opt["cmdheight"] = 2
+  vim.opt["cmdheight"] = 1
 end
 vim.opt.clipboard:append("unnamedplus")
 --[[ "Folding" ]]

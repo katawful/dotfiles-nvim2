@@ -17,7 +17,7 @@ local lsp = autoload("plugins.heirline.lsp")
 local function line(_plugin, _opts)
   local components = {}
   local raw = {}
-  config.colors = config["gen-colors"]()
+  config.colors = config["gen-colors-LATTE"]()
   local colors = config.colors
   require("heirline").load_colors(config.colors)
   do

@@ -2,5 +2,5 @@
  :enabled false
  :lazy false
  :config true
- :opts {:filetypes [:clojure :fennel]
+ :opts {:filetypes [:clojure :fennel :yuck]
         :use_default_keys true}}
